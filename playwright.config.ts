@@ -25,7 +25,7 @@ export default defineConfig<TwitterLoginOptions & BrowserOptions>({
         twitterUsername: process.env.TWITTER_AUTH_USERNAME,
         twitterBio: process.env.TWITTER_AUTH_BIO,
         newHeadless: process.env.CI ? true : false,
-        extensionVersion: 'v0.60.0-alpha.2',
+        extensionVersion: 'v0.60.0-alpha.4',
       },
     },
   ],
