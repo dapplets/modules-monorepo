@@ -18,6 +18,13 @@ jobs:
     - name: Install Playwright Browsers
       run: npx playwright install --with-deps
     - name: Run Playwright tests
+      env:
+        TWITTER_AUTH_EMAIL: ${{ secrets.TWITTER_AUTH_EMAIL }}
+        TWITTER_AUTH_USERNAME: ${{ secrets.TWITTER_AUTH_USERNAME }}
+        TWITTER_AUTH_PASSWORD: ${{ secrets.TWITTER_AUTH_PASSWORD }}
+        TWITTER_AUTH_BIO: ${{ secrets.TWITTER_AUTH_BIO }}
+        TWITTER_TEST_POST_URL: ${{ secrets.TWITTER_TEST_POST_URL }}
+        TWITTER_TEST_PROFILE_URL: ${{ secrets.TWITTER_TEST_PROFILE_URL }}
       run: npx playwright test
     - uses: actions/upload-artifact@v3
       if: always()
