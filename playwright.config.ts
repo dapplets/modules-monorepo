@@ -1,11 +1,10 @@
 import { BrowserOptions } from '@dapplets/dapplet-playwright'
 import { defineConfig, devices } from '@playwright/test'
 import dotenv from 'dotenv'
-import { TwitterLoginOptions } from './tests/fixtures/twitter-login'
 
 dotenv.config()
 
-export default defineConfig<TwitterLoginOptions & BrowserOptions>({
+export default defineConfig<BrowserOptions>({
   testDir: './tests',
   fullyParallel: true,
   forbidOnly: !!process.env.CI,
@@ -20,10 +19,6 @@ export default defineConfig<TwitterLoginOptions & BrowserOptions>({
       name: 'chromium',
       use: {
         ...devices['Desktop Chrome'],
-        twitterPassword: process.env.TWITTER_AUTH_PASSWORD,
-        twitterEmail: process.env.TWITTER_AUTH_EMAIL,
-        twitterUsername: process.env.TWITTER_AUTH_USERNAME,
-        twitterBio: process.env.TWITTER_AUTH_BIO,
         newHeadless: process.env.CI ? true : false,
         extensionVersion: 'v0.60.0-alpha.4',
       },
