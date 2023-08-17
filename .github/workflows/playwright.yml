@@ -7,7 +7,7 @@ on:
 jobs:
   test:
     timeout-minutes: 60
-    runs-on: ubuntu-latest
+    runs-on: e2e-tests-vps
     steps:
     - uses: actions/checkout@v3
     - uses: actions/setup-node@v3
@@ -25,6 +25,9 @@ jobs:
         TWITTER_AUTH_BIO: ${{ secrets.TWITTER_AUTH_BIO }}
         TWITTER_TEST_POST_URL: ${{ secrets.TWITTER_TEST_POST_URL }}
         TWITTER_TEST_PROFILE_URL: ${{ secrets.TWITTER_TEST_PROFILE_URL }}
+        IMAP_AUTH_HOST: ${{ secrets.IMAP_AUTH_HOST }}
+        IMAP_AUTH_USER: ${{ secrets.IMAP_AUTH_USER }}
+        IMAP_AUTH_PASS: ${{ secrets.IMAP_AUTH_PASS }}
       run: npx playwright test
     - uses: actions/upload-artifact@v3
       if: always()
