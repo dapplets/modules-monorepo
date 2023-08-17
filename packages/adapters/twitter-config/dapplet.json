@@ -1,0 +1,15 @@
+{
+  "name": "twitter-config.dapplet-base.eth",
+  "branch": "default",
+  "version": "0.1.6",
+  "type": "CONFIG",
+  "title": "Twitter Config",
+  "description": "Parser config for Twitter",
+  "main": "index.json",
+  "contextIds": [
+    "twitter.com",
+    "www.twitter.com",
+    "mobile.twitter.com"
+  ],
+  "dependencies": {}
+}

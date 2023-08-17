@@ -1,0 +1,35 @@
+{
+  "name": "@dapplets/modules-monorepo",
+  "version": "0.1.0",
+  "description": "Dapplet Modules Monorepo",
+  "author": "Dapplets Project <contact@dapplets.org>",
+  "license": "MIT",
+  "scripts": {
+    "start": "webpack serve --config webpack.config.js"
+  },
+  "devDependencies": {
+    "@dapplets/dapplet-extension": "develop",
+    "@dapplets/dapplet-playwright": "0.1.4",
+    "@playwright/test": "^1.37.0",
+    "raw-loader": "^4.0.2",
+    "ts-loader": "^9.4.4",
+    "typescript": "^5.1.6",
+    "url-loader": "^4.1.1",
+    "webpack": "^5.88.2",
+    "webpack-cli": "^5.1.4",
+    "webpack-dev-server": "^4.15.1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/dapplets/dapplet-extension.git"
+  },
+  "keywords": [
+    "dapplets",
+    "extension",
+    "ethereum"
+  ],
+  "bugs": {
+    "url": "https://github.com/dapplets/modules-monorepo/issues"
+  },
+  "homepage": "https://github.com/dapplets/modules-monorepo#readme"
+}
