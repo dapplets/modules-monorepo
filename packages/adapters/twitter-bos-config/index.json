@@ -19,8 +19,8 @@
       "contextSelector": "article.css-1dbjc4n",
       "widgets": {
         "bos": {
-          "styles": "styles/post/button.css",
-          "insertionPoint": "div[role=group] > *:last-child"
+          "insertionPoint": "[data-testid=tweetText]",
+          "insert": "end"
         }
       },
       "contextBuilder": {
@@ -37,8 +37,8 @@
       "contextSelector": "div[data-testid=primaryColumn]",
       "widgets": {
         "bos": {
-          "insertionPoint": "div.css-1dbjc4n.r-1ifxtd0.r-ymttw5.r-ttdzmv div.css-1dbjc4n.r-ggadg3.r-u8s1d.r-8jfcpp",
-          "insert": "end"
+          "insertionPoint": "div.css-1dbjc4n.r-1ifxtd0.r-ymttw5.r-ttdzmv div.css-1dbjc4n.r-obd0qt.r-18u37iz.r-1w6e6rj.r-1h0z5md.r-dnmrzs > *:last-child",
+          "insert": "begin"
         }
       },
       "contextBuilder": {
