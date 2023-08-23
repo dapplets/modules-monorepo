@@ -1,14 +1,16 @@
 {
   "name": "twitter-config-demo.dapplet-base.eth",
   "branch": "default",
-  "version": "0.1.6",
+  "version": "0.1.7",
   "type": "FEATURE",
   "title": "Twitter Config Demo",
   "description": "Parser config for Twitter",
   "main": "build/index.js",
   "icon": "src/Red_Icon3.png",
-  "contextIds": ["twitter-config.dapplet-base.eth"],
+  "contextIds": [
+    "twitter-config.dapplet-base.eth"
+  ],
   "dependencies": {
-    "twitter-config.dapplet-base.eth": "0.1.6"
+    "twitter-config.dapplet-base.eth": "0.1.7"
   }
 }
