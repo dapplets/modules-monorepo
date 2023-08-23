@@ -1,0 +1,13 @@
+{
+  "name": "github-config.dapplet-base.eth",
+  "branch": "default",
+  "version": "0.1.0",
+  "type": "CONFIG",
+  "title": "GitHub Config",
+  "description": "Parser config for GitHub",
+  "main": "index.json",
+  "contextIds": [
+    "github.com"
+  ],
+  "dependencies": {}
+}
