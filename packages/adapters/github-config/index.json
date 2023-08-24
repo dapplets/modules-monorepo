@@ -57,7 +57,7 @@
         "id": "string(.//div[contains(@class,'timeline-comment-group')]/@id)",
         "authorUsername": "substring-after(string(.//div[contains(@class,'TimelineItem-avatar')]/a/@href | .//a[contains(@class,'TimelineItem-avatar')]/@href), '/')",
         "authorImg": "string(.//*[contains(@class,'TimelineItem-avatar')]//img/@src)",
-        "url": "string(//html/head/meta[@property='og:url']/@content)"
+        "url": "concat(string(//html/head/meta[@property='og:url']/@content),'#', string(.//div[contains(@class,'timeline-comment-group')]/@id))"
       }
     }
   }
