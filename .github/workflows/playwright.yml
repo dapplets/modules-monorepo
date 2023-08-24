@@ -32,6 +32,8 @@ jobs:
         IMAP_AUTH_HOST: ${{ secrets.IMAP_AUTH_HOST }}
         IMAP_AUTH_USER: ${{ secrets.IMAP_AUTH_USER }}
         IMAP_AUTH_PASS: ${{ secrets.IMAP_AUTH_PASS }}
+        TEST_GITHUB_POST_URL: ${{ secrets.TEST_GITHUB_POST_URL }}
+        TEST_GITHUB_PROFILE_URL: ${{ secrets.TEST_GITHUB_PROFILE_URL }}
       run: npx playwright test
     - uses: actions/upload-artifact@v3
       if: always()
