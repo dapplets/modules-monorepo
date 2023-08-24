@@ -1,0 +1,82 @@
+.button-default {
+  cursor: pointer;
+  user-select: none;
+
+  box-sizing: border-box;
+  height: 35px;
+  margin: 0 0 12px 0;
+  padding: 0 10px;
+
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+  font-size: 15px;
+  font-weight: 600;
+  line-height: 36px;
+
+  border-radius: 6px;
+  background: inherit;
+
+  transition: 80ms cubic-bezier(0.33, 1, 0.68, 1);
+  transition-property: color,background-color,box-shadow,border-color;
+  display: flex;
+  justify-content: center;
+}
+
+.button-light {
+  color: #000;
+  background: rgb(246, 248, 250);
+  border: 1px solid rgba(31, 35, 40, 0.15);
+}
+
+.button-light:hover {
+  background-color: rgb(243, 244, 246)
+}
+
+.button-light:active {
+  background-color: rgb(235, 236, 240);
+  border-color: rgba(31, 35, 40, 0.15);
+  transition: none;
+}
+
+.button-dark {
+  background-color: rgb(33, 38, 45);
+  color: #fff;
+  border: 1px solid rgba(240, 246, 252, 0.1)
+}
+
+.button-dark:hover {
+  background-color: rgb(48, 54, 61);
+  border-color: rgb(139, 148, 158)
+}
+
+.button-dark:active {
+  background-color: rgb(40, 46, 51);
+  border-color: rgb(110, 118, 129);
+  transition: none;
+}
+
+.button-basic {
+  padding: 0;
+  background: none;
+  border: none;
+  border-radius: 7px;
+}
+
+.button-basic:hover {
+  background: none;
+}
+
+.button-basic:active {
+  background: none;
+}
+
+.button-img-display {
+  fill: currentcolor;
+  height: auto;
+  max-width: 100%;
+  position: relative;
+  vertical-align: text-bottom;
+  width: 1.25em;
+  margin: auto 0;
+  display: flex !important;
+  align-items: center !important;
+}
