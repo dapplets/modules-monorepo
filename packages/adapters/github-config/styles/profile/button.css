@@ -1,5 +1,3 @@
-/* PROFILE */
-
 .button-default {
   cursor: pointer;
   user-select: none;
@@ -9,8 +7,7 @@
   margin: 0 0 12px 0;
   padding: 0 10px;
 
-  font-family: TwitterChirp, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial,
-    sans-serif;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
   font-size: 15px;
   font-weight: 600;
   line-height: 36px;

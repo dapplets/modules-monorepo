@@ -9,8 +9,8 @@
       "contextBuilder": {
         "id": "string('global')",
         "websiteName": "string('GitHub')",
-        "username": "string(//div[@class='Overlay-titleWrap']//span[@class='Truncate-text'])",
-        "fullname": "string(//div[@class='Overlay-titleWrap']//span[@class='Truncate-text']/../../span[2])",
+        "username": "normalize-space(string(//div[@class='Overlay-titleWrap']//span[@class='Truncate-text']))",
+        "fullname": "normalize-space(string(//div[@class='Overlay-titleWrap']//span[@class='Truncate-text']/../../span[2]))",
         "img": "string(//div[@class='Overlay-titleWrap']//img/@src)"
       }
     },
@@ -30,9 +30,9 @@
         }
       },
       "contextBuilder": {
-        "id": "substring-before(substring-after(string(.//h1/span[2]), '\n'), '\n')",
-        "authorFullname": "string(.//h1/span[1])",
-        "authorUsername": "substring-before(substring-after(string(.//h1/span[2]), '\n'), '\n')",
+        "id": "normalize-space(substring-before(substring-after(string(.//h1/span[2]), '\n'), '\n'))",
+        "authorFullname": "normalize-space(string(.//h1/span[1]))",
+        "authorUsername": "normalize-space(substring-before(substring-after(string(.//h1/span[2]), '\n'), '\n'))",
         "authorImg": "string(.//img/@src)"
       }
     },
