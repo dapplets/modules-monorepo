@@ -8,7 +8,7 @@ test('should inject widgets in GitHub profile', async ({
     enableDevServer,
     activateDapplet,
 }) => {
-    await page.goto(process.env.GITHUB_TEST_PROFILE_URL!)
+    await page.goto(process.env.TEST_GITHUB_PROFILE_URL!)
     await skipOnboarding()
     await enableDevServer(registry)
     await activateDapplet('github-config-demo.dapplet-base.eth', registry)

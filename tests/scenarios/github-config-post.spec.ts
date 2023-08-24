@@ -8,7 +8,7 @@ test('should inject widgets in GitHub comment', async ({
     enableDevServer,
     activateDapplet,
 }) => {
-    await page.goto(process.env.GITHUB_TEST_POST_URL!)
+    await page.goto(process.env.TEST_GITHUB_POST_URL!)
     await skipOnboarding()
     await enableDevServer(registry)
     await activateDapplet('github-config-demo.dapplet-base.eth', registry)

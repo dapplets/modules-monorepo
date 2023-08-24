@@ -8,7 +8,7 @@ test('should inject widgets in GitHub profile via Virtual config', async ({
     enableDevServer,
     activateDapplet,
 }) => {
-    await page.goto(process.env.GITHUB_TEST_PROFILE_URL!)
+    await page.goto(process.env.TEST_GITHUB_PROFILE_URL!)
 
     await skipOnboarding()
     await enableDevServer(registry)
@@ -29,7 +29,7 @@ test('should inject widgets in GitHub comments via Virtual config', async ({
     enableDevServer,
     activateDapplet,
 }) => {
-    await page.goto(process.env.GITHUB_TEST_POST_URL!)
+    await page.goto(process.env.TEST_GITHUB_POST_URL!)
 
     await skipOnboarding()
     await enableDevServer(registry)
