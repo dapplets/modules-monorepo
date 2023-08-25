@@ -11,6 +11,6 @@
     "github-config.dapplet-base.eth"
   ],
   "dependencies": {
-    "github-config.dapplet-base.eth": "0.1.3"
+    "github-config.dapplet-base.eth": "0.1.4"
   }
 }
