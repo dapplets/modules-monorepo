@@ -1,0 +1,14 @@
+name: Social Virtual Config CD
+on:
+    workflow_dispatch:
+    push:
+        branches:
+            - master
+            - develop
+        paths:
+            - 'packages/adapters/social-virtual-config/**'
+jobs:
+    deploy-social-virtual-config:
+        uses: ./.github/workflows/cd.yml
+        with:
+            module-name: social-virtual-config.dapplet-base.eth

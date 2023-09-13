@@ -1,0 +1,14 @@
+name: Twitter Config CD
+on:
+    workflow_dispatch:
+    push:
+        branches:
+            - master
+            - develop
+        paths:
+            - 'packages/adapters/twitter-config/**'
+jobs:
+    deploy-twitter-config:
+        uses: ./.github/workflows/cd.yml
+        with:
+            module-name: twitter-config.dapplet-base.eth

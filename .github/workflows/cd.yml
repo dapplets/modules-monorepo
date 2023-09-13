@@ -1,12 +1,10 @@
-name: GitHub Dapplet CD
+name: Modules CD
 on:
-    workflow_dispatch:
-    push:
-        branches:
-            - master
-            - develop
-        paths:
-            - 'packages/adapters/github-config/**'
+    workflow_call:
+        inputs:
+            module-name:
+                required: true
+                type: string
 jobs:
     deploy:
         name: Deploy
@@ -37,16 +35,16 @@ jobs:
                       echo "TARGET_REGISTRY=$PUBLIC_REGISTRY_ADDRESS" >> "$GITHUB_ENV"
                       echo "ETH_PRIVATE_KEY=${{ secrets.PUB_ETH_PRIVATE_KEY }}" >> "$GITHUB_ENV"
                   fi
-            - name: Start the Dapplet and Deploy it to the Dapplets Registry
+            - name: Start the module and deploy it to the Dapplets Registry
               id: deploy
               env:
-                  MODULE_NAME: github-config.dapplet-base.eth
-                  ETH_PRIVATE_KEY: ${{ env.ETH_PRIVATE_KEY}}
-                  DEV_SERVER_URL: http://localhost:3001/dapplet.json
+                  MODULE_NAME: ${{ inputs.module-name }}
+                  ETH_PRIVATE_KEY: ${{ env.ETH_PRIVATE_KEY }}
+                  DEV_SERVER_URL: http://localhost:3000/dapplet.json
                   TARGET_REGISTRY: ${{ env.TARGET_REGISTRY }}
                   IPFS_GATEWAY_URL: https://ipfs-gateway.mooo.com
               run: |
-                  success=true    
+                  success=true
                   npm run cd || success=false
                   if ! ${success}; then
                       echo "The process failed."

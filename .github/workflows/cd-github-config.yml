@@ -1,0 +1,14 @@
+name: GitHub Config CD
+on:
+    workflow_dispatch:
+    push:
+        branches:
+            - master
+            - develop
+        paths:
+            - 'packages/adapters/github-config/**'
+jobs:
+    deploy-github-config:
+        uses: ./.github/workflows/cd.yml
+        with:
+            module-name: github-config.dapplet-base.eth
