@@ -12,3 +12,4 @@ jobs:
         uses: ./.github/workflows/cd.yml
         with:
             module-name: github-config.dapplet-base.eth
+        secrets: inherit

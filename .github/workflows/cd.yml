@@ -5,6 +5,11 @@ on:
             module-name:
                 required: true
                 type: string
+        secrets:
+            TEST_ETH_PRIVATE_KEY:
+                required: true
+            PUB_ETH_PRIVATE_KEY:
+                required: true
 jobs:
     deploy:
         name: Deploy
