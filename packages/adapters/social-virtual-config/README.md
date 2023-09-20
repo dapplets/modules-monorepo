@@ -1,119 +1,127 @@
 # Social Virtual Config
 
-Virtual config for social networks. The point of a virtual config is to run one dapplet on many adapters.
+Virtual config for social networks. The point of a virtual config is to run one dapplet on many adapters and webpages.
 
-### Use
+## Connect to the project
 
-Add virtual adapter to "interfaces: []" in dapplet.json of adapters
+1.  Add the virtual adapter to the `interfaces` in the **adapter** manifest `dapplet.json`
 
-```
- // example-adapter/dapplet.json
-  ...
-  "interfaces": {
-    "social-virtual-config.dapplet-base.eth": "0.1.0"
-  }
-   ...
-```
+    ```json
+    // example-adapter/dapplet.json
+    {
+        "interfaces": {
+            "social-virtual-config.dapplet-base.eth": "0.1.0"
+        }
+    }
+    ```
 
-or to "contextIds" and "dependencies" of the dapplets.
+2.  Add it to `contextIds` and `dependencies` of the **dapplet**
 
-```
-// dapplet-feature/dapplet.json
-{
-  ...
-  "contextIds": ["social-virtual-config.dapplet-base.eth"],
-  ...
-  "dependencies": {
-    "social-virtual-config.dapplet-base.eth": "0.1.0"
-  }
-}
-```
+    ```json
+    // dapplet-feature/dapplet.json
+    {
+        "contextIds": ["social-virtual-config.dapplet-base.eth"],
+        "dependencies": {
+            "social-virtual-config.dapplet-base.eth": "0.1.0"
+        }
+    }
+    ```
 
-### Contexts
+## Using in dapplets
 
-There is **POST** and **PROFILE** are contexts which use adapters.
+**GLOBAL**, **PROFILE** and **POST** contexts are available.
 
 Example:
 
-```
- this.adapter.attachConfig({
-            PROFILE: (ctx) => [
-          ...
-            ],
-            POST: (ctx) => [
-           ...
-            ],
-        })
-
+```ts
+this.adapter.attachConfig({
+    PROFILE: (ctx) => {
+        // must return a widget or an array of widgets, except of the GLOBAL context
+    },
+})
 ```
 
-`ctx` - is an _object_ that contains parameters of the current **context** where the dapplet widgets were injected. Parameters are defined by the adapter.
+`ctx` ‒ contains **parameters** of the current **context** into which the dapplet widgets are inserted.
 
-These contexts use widgets **BUTTON** and **AVATAR-BADGE**
+| GLOBAL        | PROFILE           | POST             |
+| :------------ | :---------------- | :--------------- |
+| `fullname`    | `authorFullname ` | `authorImg`      |
+| `id`          | `authorImg `      | `authorUsername` |
+| `img`         | `authorUsername`  | `id `            |
+| `url`         | `id `             | `url`            |
+| `username`    | `url`             |                  |
+| `websiteName` |                   |                  |
 
-### Widgets
+## Adapters
 
-#### BUTTON
+**NOTE!**
+If the adapter declare that it implements the virtual config, it must provide all its contects, contexts' parameters and styles all widgets.
 
-A widget that, when clicked, performs an action assigned to it by the user.
+## Widgets
 
-- `img` - image as blob - _string_
-- `label` - text label - _string_
-- `loading` - sets the loading icon instead of image - _boolean_
-- `disabled` - makes the widget disabled - _boolean_
-- `tooltip` - text tooltip - _string_
-- `hidden` - hides the widget - _boolean_
-- `exec` - action on click - _void_
-- `init` - action through initialisation - _void_
+Widgets can be inserted to PROFILE and POST contexts. GLOBAL context is used to get information about the entire page and logged in user.
+
+### 1. Button
+
+| Parameters     | Type                                   | Description                            |
+| :------------- | :------------------------------------- | :------------------------------------- |
+| **`img`**      | `string`                               | image as blob                          |
+| **`label`**    | `string`                               | text label                             |
+| **`loading`**  | `boolean`                              | sets the loading icon instead of image |
+| **`tooltip`**  | `string`                               | text tooltip                           |
+| **`disabled`** | `boolean`                              | makes the widget disabled              |
+| **`hidden`**   | `boolean`                              | hides the widget                       |
+| **`exec`**     | `(ctx: any, me: IButtonState) => void` | action on click                        |
+| **`init`**     | `(tx: any, me: IButtonState) => void`  | action through initialisation          |
 
 Example:
 
+```ts
+button({
+    initial: 'DEFAULT',
+    DEFAULT: {
+        img: MAIN_IMG,
+        label: 'TEST',
+        tooltip: 'PROFILE_BUTTON',
+        exec: () => console.log(ctx),
+    },
+})
 ```
-               button({
-                   initial: 'DEFAULT',
-                   DEFAULT: {
-                       img: MAIN_IMG,
-                       label: 'TEST',
-                       tooltip: 'PROFILE_BUTTON',
-                       exec: () => console.log(ctx),
-                   },
-               }),
 
-```
+### 2. Avatar Badge
 
-#### AVATAR-BADGE
+Parameters:
 
-Badge on the user's avatar (4 positions).
-
-- `img` - image as blob - _string_
-- `vertical` - sets a vertical position - _top_ or _bottom_
-- `horizontal` - sets a horizontal position - _left_ or _right_
-- `tooltip` - text tooltip - _string_
-- `hidden` - hides the widget - _boolean_
-- `exec` - action on click - _void_
-- `init` - action through initialisation - _void_
+| Parameters       | Type                                        | Description                   |
+| :--------------- | :------------------------------------------ | :---------------------------- |
+| **`img`** \*     | `string`                                    | image as blob                 |
+| **`vertical`**   | `'top'` or `'bottom'`                       | sets a vertical position      |
+| **`horizontal`** | `'left'` or `'right'`                       | sets a horizontal position    |
+| **`tooltip`**    | `string`                                    | text tooltip                  |
+| **`hidden`**     | `boolean`                                   | hides the widget              |
+| **`exec`**       | `(ctx: any, me: IAvatarBadgeState) => void` | action on click               |
+| **`init`**       | `(tx: any, me: IAvatarBadgeState) => void`  | action through initialisation |
 
 Example:
 
-```
-              avatarBadge({
-                   initial: 'DEFAULT',
-                   DEFAULT: {
-                       vertical: 'bottom',
-                       horizontal: 'right',
-                       img: EXAMPLE_IMG,
-                       tooltip: 'PROFILE_AVATAR_BADGE',
-                       exec: () => console.log(ctx),
-                   },
-               }),
-
+```ts
+avatarBadge({
+    initial: 'DEFAULT',
+    DEFAULT: {
+        vertical: 'bottom',
+        horizontal: 'right',
+        img: EXAMPLE_IMG,
+        tooltip: 'PROFILE_AVATAR_BADGE',
+        exec: () => console.log(ctx),
+    },
+})
 ```
 
 ## Built With
 
-- [TypeScript](https://www.typescriptlang.org/)
+-   [TypeScript](https://www.typescriptlang.org/)
 
 ## Authors
 
-- **Dmitry Palchun** - _Initial work_ - [ethernian](https://github.com/ethernian)
-- **Alexander Sakhaev** - _Initial work_ - [alsakhaev](https://github.com/alsakhaev)
+-   **Dmitry Palchun** ‒ _Initial work_ ‒ [ethernian](https://github.com/ethernian)
+-   **Alexander Sakhaev** ‒ _Initial work_ ‒ [alsakhaev](https://github.com/alsakhaev)
