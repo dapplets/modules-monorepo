@@ -7,7 +7,6 @@ Virtual config for social networks. The point of a virtual config is to run one 
 1.  Add the virtual adapter to the `interfaces` in the **adapter** manifest `dapplet.json`
 
     ```json
-    // example-adapter/dapplet.json
     {
         "interfaces": {
             "social-virtual-config.dapplet-base.eth": "0.1.0"
@@ -15,10 +14,9 @@ Virtual config for social networks. The point of a virtual config is to run one 
     }
     ```
 
-2.  Add it to `contextIds` and `dependencies` of the **dapplet**
+2.  Add it to `contextIds` and `dependencies` of the **dapplet** manifest
 
     ```json
-    // dapplet-feature/dapplet.json
     {
         "contextIds": ["social-virtual-config.dapplet-base.eth"],
         "dependencies": {
@@ -55,7 +53,7 @@ this.adapter.attachConfig({
 ## Adapters
 
 **NOTE!**
-If the adapter declare that it implements the virtual config, it must provide all its contects, contexts' parameters and styles all widgets.
+If an adapter claims to implement a virtual config, it must provide all of its contexts, context parameters, and styles for all widgets.
 
 ## Widgets
 
