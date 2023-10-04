@@ -23,6 +23,19 @@
           "insert": "end"
         }
       },
+      "insertionPoints": {
+        "POST_TEXT": {
+          "selector": "[data-testid=tweetText]",
+          "insert": "end"
+        },
+        "POST_AVATAR": {
+          "selector": "div.css-1dbjc4n.r-18kxxzh.r-1wbh5a2.r-13qz1uu > *:last-child"
+        },
+        "POST_FULLNAME": {
+          "selector": "[data-testid=User-Name]",
+          "insert": "inside"
+        }
+      },
       "contextBuilder": {
         "id": "substring-after(string(.//time/../@href), 'status/')",
         "text": "string(.//*[@data-testid='tweetText'])",
@@ -46,6 +59,29 @@
         "authorFullname": "string(.//*[@data-testid='UserName']//span[1])",
         "authorUsername": "substring-after(string(.//*[@data-testid='UserName']/div/div/div[2]//span), '@')",
         "authorImg": "string(.//img[contains(@alt,'Opens profile photo')]/@src)"
+      }
+    },
+    "PROFILE_POPUP": {
+      "containerSelector": "#react-root",
+      "contextSelector": "div[data-testid=HoverCard]",
+      "widgets": {
+        "bos": { }
+      },
+      "insertionPoints": {
+        "PROFILE_POPUP_AVATAR": {
+          "selector": "[data-testid=UserAvatar-Container-MrConCreator]",
+          "insert": "end"
+        },
+        "PROFILE_POPUP_TEXT": {
+          "selector": ":scope > div > div > div:nth-child(2)",
+          "insert": "end"
+        }
+      },
+      "contextBuilder": {
+        "id": "substring-after(string(.//a/@href), '/')",
+        "authorFullname": "string(.//a//span)",
+        "authorUsername": "substring-after(string(.//a/@href), '/')",
+        "authorImg": "string(.//a//img/@src)"
       }
     }
   }
