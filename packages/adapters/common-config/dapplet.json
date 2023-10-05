@@ -1,7 +1,7 @@
 {
   "name": "common-config.dapplet-base.eth",
   "branch": "default",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "type": "CONFIG",
   "title": "Common Config",
   "description": "Parser config for Web",
@@ -15,7 +15,5 @@
     "example.com"
   ],
   "dependencies": {},
-  "interfaces": {
-    "social-virtual-config.dapplet-base.eth": "0.1.0"
-  }
+  "interfaces": {}
 }
