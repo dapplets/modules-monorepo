@@ -1,0 +1,7 @@
+:host {
+    display: block;
+    transform: translateY(-5px);
+    bottom: -2px;
+    left: -7px;
+    position: absolute;
+}

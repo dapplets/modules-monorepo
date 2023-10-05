@@ -20,20 +20,20 @@
       "widgets": {
         "bos": {
           "insertionPoint": "[data-testid=tweetText]",
-          "insert": "end"
-        }
-      },
-      "insertionPoints": {
-        "POST_TEXT": {
-          "selector": "[data-testid=tweetText]",
-          "insert": "end"
-        },
-        "POST_AVATAR": {
-          "selector": "div.css-1dbjc4n.r-18kxxzh.r-1wbh5a2.r-13qz1uu > *:last-child"
-        },
-        "POST_FULLNAME": {
-          "selector": "[data-testid=User-Name]",
-          "insert": "inside"
+          "insert": "end",
+          "insertionPoints": {
+            "POST_TEXT": {
+              "selector": "[data-testid=tweetText]",
+              "insert": "end"
+            },
+            "POST_AVATAR": {
+              "selector": "div.css-1dbjc4n.r-18kxxzh.r-1wbh5a2.r-13qz1uu > *:last-child"
+            },
+            "POST_FULLNAME": {
+              "selector": "[data-testid=User-Name]",
+              "insert": "inside"
+            }
+          }
         }
       },
       "contextBuilder": {
@@ -51,7 +51,14 @@
       "widgets": {
         "bos": {
           "insertionPoint": "div.css-1dbjc4n.r-1ifxtd0.r-ymttw5.r-ttdzmv div.css-1dbjc4n.r-obd0qt.r-18u37iz.r-1w6e6rj.r-1h0z5md.r-dnmrzs > *:last-child",
-          "insert": "begin"
+          "insert": "begin",
+          "insertionPoints": {
+            "PROFILE_AVATAR": {
+              "selector": "div.css-1dbjc4n.r-1ifxtd0.r-ymttw5.r-ttdzmv div.css-1dbjc4n.r-ggadg3.r-u8s1d.r-8jfcpp",
+              "insert": "end",
+              "styles": "styles/profile/bos/avatar.css"
+            }
+          }
         }
       },
       "contextBuilder": {
