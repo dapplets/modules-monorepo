@@ -27,11 +27,20 @@
               "insert": "end"
             },
             "POST_AVATAR": {
-              "selector": "div.css-1dbjc4n.r-18kxxzh.r-1wbh5a2.r-13qz1uu > *:last-child"
+              "selector": "div.css-1dbjc4n.r-18kxxzh.r-1wbh5a2.r-13qz1uu > *:last-child",
+              "styles": "styles/post/bos/post-avatar.css"
             },
             "POST_FULLNAME": {
-              "selector": "[data-testid=User-Name]",
-              "insert": "inside"
+              "selector": "[data-testid=User-Name] > div:first-child",
+              "insert": "inside",
+              "styles": "styles/post/bos/fullname.css"
+            },
+            "TEXT_BEFORE": {
+              "selector": "[data-testid=tweetText]",
+              "insert": "begin",
+              "wrapper": {
+                "styles": "styles/post/bos/text-before-wrapper.css"
+              }
             }
           }
         }
@@ -57,6 +66,11 @@
               "selector": "div.css-1dbjc4n.r-1ifxtd0.r-ymttw5.r-ttdzmv div.css-1dbjc4n.r-ggadg3.r-u8s1d.r-8jfcpp",
               "insert": "end",
               "styles": "styles/profile/bos/avatar.css"
+            },
+            "PROFILE_FULLNAME": {
+              "selector": "[data-testid=UserName] > div > div > div:first-child > div",
+              "insert": "inside",
+              "styles": "styles/profile/bos/fullname.css"
             }
           }
         }
@@ -72,16 +86,20 @@
       "containerSelector": "#react-root",
       "contextSelector": "div[data-testid=HoverCard]",
       "widgets": {
-        "bos": { }
-      },
-      "insertionPoints": {
-        "PROFILE_POPUP_AVATAR": {
-          "selector": "[data-testid=UserAvatar-Container-MrConCreator]",
-          "insert": "end"
-        },
-        "PROFILE_POPUP_TEXT": {
-          "selector": ":scope > div > div > div:nth-child(2)",
-          "insert": "end"
+        "bos": {
+          "insertionPoints": {
+            "PROFILE_POPUP_AVATAR": {
+              "selector": "[data-testid=UserAvatar-Container-MrConCreator]",
+              "insert": "end"
+            },
+            "PROFILE_POPUP_TEXT": {
+              "selector": ":scope > div > div > div:nth-child(2)",
+              "insert": "end",
+              "wrapper": {
+                "styles": "styles/profile-popup/bos/popup-text-wrapper.css"
+              }
+            }
+          }
         }
       },
       "contextBuilder": {
