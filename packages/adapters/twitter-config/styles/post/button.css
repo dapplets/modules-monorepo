@@ -167,4 +167,5 @@ div[role='button'] span {
   -webkit-box-pack: center;
   min-height: 20px;
   overflow: visible;
+  margin-left: 30px;
 }
