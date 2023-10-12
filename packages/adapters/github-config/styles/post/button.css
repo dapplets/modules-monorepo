@@ -1,0 +1,99 @@
+@font-face {
+  font-family: 'Open Sans';
+  font-style: normal;
+  font-weight: 400;
+  src: local('Open Sans'), local('OpenSans'),
+      url(https://themes.googleusercontent.com/static/fonts/opensans/v6/K88pR3goAWT7BTt32Z01mz8E0i7KZn-EPnyo3HZu7kw.woff)
+          format('woff');
+}
+
+[role=button] {
+  position: relative;
+  display: flex;
+  max-height: 18px;
+  align-items: center;
+
+  font-family: 'Open Sans', sans-serif;
+
+  border: 1px solid #d0d7de;
+  border-radius: 9em;
+
+  cursor: pointer;
+
+  transition-property: all;
+  transition-duration: 0.1s;
+  transition-timing-function: ease-in-out;
+  padding: 0 3px;
+}
+
+[role=button].button-dark {
+  border-color: rgb(48 54 61);
+}
+
+[role=button]:hover {
+  background:  rgb(249, 249, 250);
+  border: 1px solid #8028c6;
+}
+
+[role=button]:active {
+  background: rgb(250, 250, 250);
+  border: 1px solid #752ab3;
+}
+
+[role=button].button-dark:hover {
+  background-color: rgb(48, 54, 61);
+  border-color: rgb(139, 148, 158)
+}
+
+[role=button].button-dark:active {
+  background-color: rgb(40, 46, 51);
+  border-color: rgb(110, 118, 129)
+}
+
+[role=button] img {
+  width: 14px;
+  padding: 2px;
+  margin: 0px 4px
+}
+
+[role=button] > .button-label-overflow {
+  display: flex;
+  margin-right: 3px !important;
+}
+
+[role=button] span {
+  font-size: 0.75rem;
+  line-height: 18px;
+  color: rgb(101, 109, 118);
+  font-weight: 500;
+}
+
+[role=button].button-dark span {
+  color: rgb(213, 217, 224);
+}
+
+[role=button] > div:first-child > span {
+  padding: 0px 1px 0px 4px;
+}
+
+[role=button].button-light:hover > .button-label-overflow,
+[role=button].button-light:active > .button-label-overflow {
+  background: linear-gradient(149.06deg, #8028c6 13%, #363170 111.18%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+:host {
+  display: table;
+  padding: 2px 0px 0 10px;
+}
+
+.button-img-display {
+  display: flex !important;
+  align-items: center !important;
+}
+
+.wrapper-button {
+  margin: 0 !important;
+}

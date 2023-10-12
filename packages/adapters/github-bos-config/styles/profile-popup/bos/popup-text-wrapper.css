@@ -1,0 +1,6 @@
+:host {
+    display: grid;
+    grid-template-columns: 128px 128px;
+    gap: 8px;
+    margin: 4px 0 4px 0;
+}
