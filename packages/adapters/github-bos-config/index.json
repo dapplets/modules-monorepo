@@ -90,8 +90,8 @@
       }
     },
     "PROFILE_POPUP": {
-      "containerSelector": "#react-root",
-      "contextSelector": "div[data-testid=HoverCard]",
+      "containerSelector": "body",
+      "contextSelector": ".Popover",
       "widgets": {
         "bos": {
           "insertionPoints": {
@@ -100,7 +100,7 @@
               "insert": "end"
             },
             "PROFILE_POPUP_TEXT": {
-              "selector": ":scope > div > div > div:nth-child(2)",
+              "selector": "[aria-label='User login and name']",
               "insert": "end",
               "wrapper": {
                 "styles": "styles/profile-popup/bos/popup-text-wrapper.css"
