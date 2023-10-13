@@ -111,7 +111,7 @@
       },
       "contextBuilder": {
         "id": "substring-after(string(.//a/@href), '/')",
-        "authorFullname": "string(.//a//span)",
+        "authorFullname": "normalize-space(string(.//*[@aria-label='User login and name'] //*[contains(@class, 'Truncate')]))",
         "authorUsername": "substring-after(string(.//a/@href), '/')",
         "authorImg": "string(.//a//img/@src)"
       }
