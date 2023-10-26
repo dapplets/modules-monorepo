@@ -5,12 +5,14 @@ const registry = 'http://localhost:3000/dapplet.json'
 test('should inject widgets in Twitter profile', async ({
   page,
   skipOnboarding,
+  enableDevMode,
   enableDevServer,
   activateDapplet,
 }) => {
   await page.goto(process.env.TWITTER_TEST_PROFILE_URL!)
 
   await skipOnboarding()
+  await enableDevMode()
   await enableDevServer(registry)
   await activateDapplet('twitter-config-demo.dapplet-base.eth', registry)
 
