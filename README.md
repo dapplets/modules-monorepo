@@ -21,6 +21,7 @@ $/
 
 - `packages` - Examples of modules and adapters for Dapplet Extension
 - `packages\adapters` - Examples adapters for Dapplet Extension
+- `packages\adapters\common-config` - The Common config provides you with a high-level interface for universal augmentation
 - `packages\adapters\github-config` - Resolver of Adapter for GitHub
 - `packages\adapters\social-virtual-config` - Virtual config for social networks
 - `packages\adapters\twitter-config` - Resolver of Adapter for Twitter
