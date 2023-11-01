@@ -1,7 +1,7 @@
 {
   "name": "twitter-config.dapplet-base.eth",
   "branch": "default",
-  "version": "0.1.6",
+  "version": "0.1.11",
   "type": "CONFIG",
   "title": "Twitter Config",
   "description": "Parser config for Twitter",
@@ -11,5 +11,8 @@
     "www.twitter.com",
     "mobile.twitter.com"
   ],
-  "dependencies": {}
+  "dependencies": {},
+  "interfaces": {
+    "social-virtual-config.dapplet-base.eth": "0.1.0"
+  }
 }

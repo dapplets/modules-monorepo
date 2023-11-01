@@ -1,0 +1,29 @@
+{
+  "name": "common-config.dapplet-base.eth",
+  "branch": "default",
+  "version": "0.1.1",
+  "type": "CONFIG",
+  "title": "Common Config",
+  "description": "Parser config for Web",
+  "main": "index.json",
+  "contextIds": [
+    "twitter.com",
+    "www.twitter.com",
+    "x.com",
+    "www.x.com",
+    "instagram.com",
+    "www.instagram.com",
+    "google.com",
+    "www.google.com",
+    "youtube.com",
+    "www.youtube.com",
+    "facebook.com",
+    "www.facebook.com",
+    "example.com",
+    "www.example.com",
+    "dapplets.org",
+    "www.dapplets.org"
+  ],
+  "dependencies": {},
+  "interfaces": {}
+}

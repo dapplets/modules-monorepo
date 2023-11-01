@@ -1,0 +1,15 @@
+name: Common Config CD
+on:
+    workflow_dispatch:
+    push:
+        branches:
+            - master
+            - develop
+        paths:
+            - 'packages/adapters/common-config/**'
+jobs:
+    deploy-common-config:
+        uses: ./.github/workflows/cd.yml
+        with:
+            module-name: common-config.dapplet-base.eth
+        secrets: inherit

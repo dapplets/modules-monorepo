@@ -1,0 +1,8 @@
+{
+  "name": "social-virtual-config.dapplet-base.eth",
+  "branch": "default",
+  "version": "0.1.0",
+  "type": "INTERFACE",
+  "title": "Social Virtual Config",
+  "description": "Virtual config for social networks"
+}
