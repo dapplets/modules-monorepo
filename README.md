@@ -4,7 +4,7 @@
 
 These instructions will get you a copy of the project up and running on your local machine for development and testing purposes. See deployment for notes on how to deploy the project on a live system.
 
-This repository is built as a mono-repository. Lerna is used to assemble packages inside.
+This repository is built as a mono-repository.
 
 ### Solution Structure
 
@@ -45,8 +45,3 @@ Dev Config URL: `http://localhost:3000/dapplet.json`
 ## Built With
 
 - [TypeScript](https://www.typescriptlang.org/)
-
-## Authors
-
-- **Dmitry Palchun** - _Initial work_ - [ethernian](https://github.com/ethernian)
-- **Alexander Sakhaev** - _Initial work_ - [alsakhaev](https://github.com/alsakhaev)

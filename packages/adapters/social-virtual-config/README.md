@@ -8,9 +8,9 @@ Virtual config for social networks. The point of a virtual config is to run one 
 
     ```json
     {
-        "interfaces": {
-            "social-virtual-config.dapplet-base.eth": "0.1.0"
-        }
+      "interfaces": {
+        "social-virtual-config.dapplet-base.eth": "0.1.0"
+      }
     }
     ```
 
@@ -18,10 +18,10 @@ Virtual config for social networks. The point of a virtual config is to run one 
 
     ```json
     {
-        "contextIds": ["social-virtual-config.dapplet-base.eth"],
-        "dependencies": {
-            "social-virtual-config.dapplet-base.eth": "0.1.0"
-        }
+      "contextIds": ["social-virtual-config.dapplet-base.eth"],
+      "dependencies": {
+        "social-virtual-config.dapplet-base.eth": "0.1.0"
+      }
     }
     ```
 
@@ -33,10 +33,10 @@ Example:
 
 ```ts
 this.adapter.attachConfig({
-    PROFILE: (ctx) => {
-        // must return a widget or an array of widgets, except of the GLOBAL context
-    },
-})
+  PROFILE: (ctx) => {
+    // must return a widget or an array of widgets, except of the GLOBAL context
+  },
+});
 ```
 
 `ctx` ‒ contains **parameters** of the current **context** into which the dapplet widgets are inserted.
@@ -76,14 +76,14 @@ Example:
 
 ```ts
 button({
-    initial: 'DEFAULT',
-    DEFAULT: {
-        img: MAIN_IMG,
-        label: 'TEST',
-        tooltip: 'PROFILE_BUTTON',
-        exec: () => console.log(ctx),
-    },
-})
+  initial: "DEFAULT",
+  DEFAULT: {
+    img: MAIN_IMG,
+    label: "TEST",
+    tooltip: "PROFILE_BUTTON",
+    exec: () => console.log(ctx),
+  },
+});
 ```
 
 ### 2. Avatar Badge
@@ -104,22 +104,17 @@ Example:
 
 ```ts
 avatarBadge({
-    initial: 'DEFAULT',
-    DEFAULT: {
-        vertical: 'bottom',
-        horizontal: 'right',
-        img: EXAMPLE_IMG,
-        tooltip: 'PROFILE_AVATAR_BADGE',
-        exec: () => console.log(ctx),
-    },
-})
+  initial: "DEFAULT",
+  DEFAULT: {
+    vertical: "bottom",
+    horizontal: "right",
+    img: EXAMPLE_IMG,
+    tooltip: "PROFILE_AVATAR_BADGE",
+    exec: () => console.log(ctx),
+  },
+});
 ```
 
 ## Built With
 
--   [TypeScript](https://www.typescriptlang.org/)
-
-## Authors
-
--   **Dmitry Palchun** ‒ _Initial work_ ‒ [ethernian](https://github.com/ethernian)
--   **Alexander Sakhaev** ‒ _Initial work_ ‒ [alsakhaev](https://github.com/alsakhaev)
+- [TypeScript](https://www.typescriptlang.org/)
