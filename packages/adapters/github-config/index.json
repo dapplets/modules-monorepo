@@ -35,7 +35,7 @@
         "authorFullname": "normalize-space(string(.//h1/span[1]))",
         "authorUsername": "normalize-space(substring-before(substring-after(string(.//h1/span[2]), '\n'), '\n'))",
         "authorImg": "string(.//img/@src)",
-        "url": "string(//html/head/meta[@property='og:url']/@content)"
+        "url": "concat('https://github.com/', normalize-space(substring-before(substring-after(string(.//h1/span[2]), '\n'), '\n')))"
       }
     },
     "POST": {
@@ -57,7 +57,7 @@
         "id": "string(.//div[contains(@class,'timeline-comment-group')]/@id)",
         "authorUsername": "substring-after(string(.//div[contains(@class,'TimelineItem-avatar')]/a/@href | .//a[contains(@class,'TimelineItem-avatar')]/@href), '/')",
         "authorImg": "string(.//*[contains(@class,'TimelineItem-avatar')]//img/@src)",
-        "url": "concat(string(//html/head/meta[@property='og:url']/@content),'#', string(.//div[contains(@class,'timeline-comment-group')]/@id))"
+        "url": "concat(string(//turbo-frame/@src | //html/head/meta[@property='og:url']/@content),'#', string(.//div[contains(@class,'timeline-comment-group')]/@id))"
       }
     }
   }

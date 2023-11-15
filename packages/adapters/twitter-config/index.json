@@ -82,7 +82,7 @@
         "authorFullname": "string(.//*[@data-testid='UserName']//span[1])",
         "authorUsername": "substring-after(string(.//*[@data-testid='UserName']/div/div/div[2]//span), '@')",
         "authorImg": "string(.//img[contains(@alt,'Opens profile photo')]/@src)",
-        "url": "string(//html/head/meta[@property='og:url']/@content)"
+        "url": "concat('https://twitter.com/', substring-after(string(.//*[@data-testid='UserName']/div/div/div[2]//span), '@'))"
       }
     }
   }
