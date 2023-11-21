@@ -17,7 +17,7 @@
     },
     "POST": {
       "containerSelector": "main[role=main]",
-      "contextSelector": "article.css-1dbjc4n",
+      "contextSelector": "article[data-testid=tweet]",
       "widgets": {
         "button": {
           "styles": "styles/post/button.css",
@@ -25,7 +25,7 @@
         },
         "avatarBadge": {
           "styles": "styles/post/avatarBadge.css",
-          "insertionPoint": "div.css-1dbjc4n.r-18kxxzh.r-1wbh5a2.r-13qz1uu > *:last-child"
+          "insertionPoint": "div.r-18kxxzh.r-1wbh5a2.r-13qz1uu > *:last-child"
         }
       },
       "events": {
@@ -68,12 +68,12 @@
       "widgets": {
         "button": {
           "styles": "styles/profile/button.css",
-          "insertionPoint": "div.css-1dbjc4n.r-1ifxtd0.r-ymttw5.r-ttdzmv div.css-1dbjc4n.r-obd0qt.r-18u37iz.r-1w6e6rj.r-1h0z5md.r-dnmrzs > *:last-child",
+          "insertionPoint": "div.css-175oi2r.r-obd0qt.r-18u37iz.r-1w6e6rj.r-1h0z5md.r-dnmrzs > a",
           "insert": "begin"
         },
         "avatarBadge": {
           "styles": "styles/profile/avatarBadge.css",
-          "insertionPoint": "div.css-1dbjc4n.r-1ifxtd0.r-ymttw5.r-ttdzmv div.css-1dbjc4n.r-ggadg3.r-u8s1d.r-8jfcpp",
+          "insertionPoint": "div.r-1ifxtd0.r-ymttw5.r-ttdzmv div.r-ggadg3.r-u8s1d.r-8jfcpp",
           "insert": "end"
         }
       },
