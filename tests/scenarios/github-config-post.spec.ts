@@ -5,11 +5,13 @@ const registry = 'http://localhost:3000/dapplet.json'
 test('should inject widgets in GitHub comment', async ({
     page,
     skipOnboarding,
+    enableDevMode,
     enableDevServer,
     activateDapplet,
 }) => {
     await page.goto(process.env.TEST_GITHUB_POST_URL!)
     await skipOnboarding()
+    await enableDevMode()
     await enableDevServer(registry)
     await activateDapplet('github-config-demo.dapplet-base.eth', registry)
 
