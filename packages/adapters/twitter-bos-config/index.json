@@ -11,12 +11,13 @@
         "websiteName": "string('Twitter')",
         "username": "substring-after(string(//header//a[@aria-label='Profile']/@href), '/')",
         "fullname": "string(//*[@aria-label='Account menu']//img/@alt)",
-        "img": "string(//*[@aria-label='Account menu']//img/@src)"
+        "img": "string(//*[@aria-label='Account menu']//img/@src)",
+        "url": "string(//html/head/meta[@property='og:url']/@content)"
       }
     },
     "POST": {
       "containerSelector": "main[role=main]",
-      "contextSelector": "article.css-1dbjc4n",
+      "contextSelector": "article[data-testid=tweet]",
       "widgets": {
         "bos": {
           "insertionPoint": "[data-testid=tweetText]",
@@ -27,7 +28,7 @@
               "insert": "end"
             },
             "POST_AVATAR": {
-              "selector": "div.css-1dbjc4n.r-18kxxzh.r-1wbh5a2.r-13qz1uu > *:last-child",
+              "selector": "div.r-18kxxzh.r-1wbh5a2.r-13qz1uu > *:last-child",
               "styles": "styles/post/bos/post-avatar.css"
             },
             "POST_FULLNAME": {
@@ -51,7 +52,8 @@
         "authorFullname": "string(.//*[@data-testid='User-Name']//span)",
         "authorUsername": "substring-before(substring-after(string(.//time/../@href), '/'), '/')",
         "authorImg": "string(.//img/@src)",
-        "createdAt": "string(.//time/@datetime)"
+        "createdAt": "string(.//time/@datetime)",
+        "url": "concat('https://twitter.com/', substring-before(substring-after(string(.//time/../@href), '/'), '/'), '/status/', substring-after(string(.//time/../@href), 'status/'))"
       }
     },
     "PROFILE": {
