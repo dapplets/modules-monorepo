@@ -1,0 +1,17 @@
+{
+  "name": "reddit-bos-config",
+  "branch": "default",
+  "version": "0.1.0",
+  "type": "CONFIG",
+  "title": "Reddit BOS Config",
+  "description": "Parser config for Reddit utilizing NEAR BOS",
+  "main": "index.json",
+  "contextIds": [
+    "reddit.com",
+    "www.reddit.com"
+  ],
+  "dependencies": {},
+  "interfaces": {
+    "bos-virtual-config.dapplet-base.eth": "0.1.0"
+  }
+}

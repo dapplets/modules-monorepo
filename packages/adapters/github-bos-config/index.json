@@ -75,6 +75,10 @@
               "wrapper": {
                 "styles": "styles/post/bos/text-before-wrapper.css"
               }
+            },
+            "POST_SOUTH": {
+              "selector": ".timeline-comment-actions",
+              "styles": "styles/post/bos/south.css"
             }
           }
         }
