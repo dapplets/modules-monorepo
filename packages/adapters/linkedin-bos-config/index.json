@@ -1,0 +1,97 @@
+{
+  "themes": {
+    "LIGHT": "boolean(//html[contains(@class,'theme-light')])",
+    "DARK": "boolean(//html[contains(@class,'theme-dark')])"
+  },
+  "contexts": {
+    "GLOBAL": {
+      "containerSelector": "html",
+      "contextBuilder": {
+        "id": "string('global')",
+        "websiteName": "string('LinkedIn')",
+        "username": "string(//*[@id='email-collection-tooltip-id']/span/span[1])",
+        "img": "string(//img[contains(@class, 'global-nav__me-photo')]/@src)",
+        "url": "string(//html/head/meta[@property='og:url']/@content)"
+      }
+    },
+    "POST": {
+      "containerSelector": "main",
+      "contextSelector": ".feed-shared-update-v2",
+      "widgets": {
+        "bos": {
+          "insertionPoint": ".feed-shared-social-action-bar__action-button:last-child",
+          "styles": "styles/post/bos/south.css",
+          "insertionPoints": {
+            "POST_AVATAR": {
+              "selector": ".js-update-components-actor__avatar div:first-child",
+              "insert": "inside",
+              "styles": "styles/post/bos/post-avatar.css"
+            },
+            "POST_NORTH": {
+              "selector": ".update-components-actor__container",
+              "styles": "styles/post/bos/north.css"
+            },
+            "POST_SOUTH": {
+              "selector": ".feed-shared-social-action-bar__action-button:last-child",
+              "styles": "styles/post/bos/south.css"
+            },
+            "POST_FULLNAME": {
+              "selector": ".update-components-actor__meta>a:last-child>span>div>span",
+              "insert": "inside",
+              "styles": "styles/post/bos/fullname.css"
+            },
+            "POST_TEXT": {
+              "selector": ".update-v2-social-activity",
+              "insert": "begin",
+              "styles": "styles/post/bos/text.css"
+            },
+            "TEXT_BEFORE": {
+              "selector": ".update-components-actor",
+              "styles": "styles/post/bos/text.css",
+              "wrapper": {
+                "styles": "styles/post/bos/text-before-wrapper.css"
+              }
+            }
+          }
+        }
+      },
+      "contextBuilder": {
+        "id": "substring-after(string(./@id), '_')",
+        "text": "substring-before(string(.//*[@data-adclicklocation='title']//*[@data-click-id='body'] | .//*[@data-adclicklocation='title']), '\n')",
+        "innerText": "string(.//*[@data-click-id='body']//*[@data-click-id='text'] | .//*[@data-click-id='text'])",
+        "innerImage": "string(.//*[@data-click-id='media']//img/@src | .//img[contains(@class, 'ImageBox-image media-element')]/@src)",
+        "innerLink": "string(.//a[@data-testid='outbound-link']/@href)",
+        "innerVideo": "string(.//*[@data-click-id='media']//*[@data-testid='shreddit-player-wrapper']//@src)",
+        "authorUsername": "string(.//*[@data-click-id='user'])",
+        "publisher": "substring(string(.//*[@data-click-id='subreddit']/@href), 2, string-length(string(.//*[@data-click-id='subreddit']/@href)) - 2)",
+        "authorImg": "string(.//img/@src)",
+        "url": "concat('https://www.linkedin.com', string(.//*[@data-click-id='body']/@href))"
+      }
+    },
+    "PROFILE": {
+      "containerSelector": "._3ozFtOe6WpJEMUtxDOIvtU",
+      "contextSelector": ".QscnL9OySMkHhGudEvEya",
+      "widgets": {
+        "bos": {
+          "insertionPoint": "._3TG57N4WQtubLLo8SbAXVF",
+          "insertionPoints": {
+            "PROFILE_AVATAR": {
+              "selector": "img:first-child",
+              "styles": "styles/profile/bos/avatar.css"
+            },
+            "PROFILE_FULLNAME": {
+              "selector": "._3TG57N4WQtubLLo8SbAXVF",
+              "styles": "styles/profile/bos/fullname.css"
+            }
+          }
+        }
+      },
+      "contextBuilder": {
+        "id": "string(.//h2)",
+        "authorFullname": "string(.//h1)",
+        "authorUsername": "string(.//h2)",
+        "authorImg": "string(.//img/@src)"
+      }
+    }
+  }
+}
