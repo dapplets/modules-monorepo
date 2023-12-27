@@ -60,28 +60,29 @@
       }
     },
     "PROFILE": {
-      "containerSelector": "._3ozFtOe6WpJEMUtxDOIvtU",
-      "contextSelector": ".QscnL9OySMkHhGudEvEya",
+      "containerSelector": "._3ozFtOe6WpJEMUtxDOIvtU, .masthead, main, section[id='right-sidebar-container']",
+      "contextSelector": ".QscnL9OySMkHhGudEvEya, div",
       "widgets": {
         "bos": {
-          "insertionPoint": "._3TG57N4WQtubLLo8SbAXVF",
+          "insertionPoint": "._3TG57N4WQtubLLo8SbAXVF, .flex.w-100.mt-xs>span, faceplate-tracker[source='profile'][noun='chat']",
+          "styles": "styles/profile/bos/fullname.css",
           "insertionPoints": {
             "PROFILE_AVATAR": {
-              "selector": "img:first-child",
+              "selector": "img:last-child, .shreddit-subreddit-icon__icon",
               "styles": "styles/profile/bos/avatar.css"
             },
             "PROFILE_FULLNAME": {
-              "selector": "._3TG57N4WQtubLLo8SbAXVF",
+              "selector": "._3TG57N4WQtubLLo8SbAXVF, .flex.w-100.mt-xs>span, faceplate-tracker[source='profile'][noun='chat']",
               "styles": "styles/profile/bos/fullname.css"
             }
           }
         }
       },
       "contextBuilder": {
-        "id": "string(.//h2)",
-        "authorFullname": "string(.//h1)",
-        "authorUsername": "string(.//h2)",
-        "authorImg": "string(.//img/@src)"
+        "id": "string(.//h2 | .//*[contains(@class, 'flex items-end justify-start')]//*[contains(@class, 'font-bold text-18')])",
+        "authorFullname": "string(.//h1 | .//*[contains(@class, 'flex items-end justify-start')]//*[contains(@class, 'font-bold text-18')])",
+        "authorUsername": "string(.//h2 | .//*[contains(@class, 'flex items-end justify-start')]//*[contains(@class, 'font-bold text-18')])",
+        "authorImg": "string(.//img/@src | .//*[contains(@class, 'flex items-end justify-start')]//*[contains(@class, 'font-bold text-18')])"
       }
     }
   }
