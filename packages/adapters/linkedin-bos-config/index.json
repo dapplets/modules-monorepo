@@ -9,9 +9,10 @@
       "contextBuilder": {
         "id": "string('global')",
         "websiteName": "string('LinkedIn')",
-        "username": "string(//*[@id='email-collection-tooltip-id']/span/span[1])",
+        "username": "substring(substring-before(substring-after(string(.//body/code[7]), 'publicIdentifier'), ','), 4, string-length(substring-before(substring-after(string(.//body/code[7]), 'publicIdentifier'), ',')) - 4)",
+        "fullname": "string(//img[contains(@class, 'global-nav__me-photo')]/@alt)",
         "img": "string(//img[contains(@class, 'global-nav__me-photo')]/@src)",
-        "url": "string(//html/head/meta[@property='og:url']/@content)"
+        "url": "string('https://www.linkedin.com')"
       }
     },
     "POST": {
@@ -56,41 +57,41 @@
         }
       },
       "contextBuilder": {
-        "id": "substring-after(string(./@id), '_')",
-        "text": "substring-before(string(.//*[@data-adclicklocation='title']//*[@data-click-id='body'] | .//*[@data-adclicklocation='title']), '\n')",
-        "innerText": "string(.//*[@data-click-id='body']//*[@data-click-id='text'] | .//*[@data-click-id='text'])",
-        "innerImage": "string(.//*[@data-click-id='media']//img/@src | .//img[contains(@class, 'ImageBox-image media-element')]/@src)",
-        "innerLink": "string(.//a[@data-testid='outbound-link']/@href)",
-        "innerVideo": "string(.//*[@data-click-id='media']//*[@data-testid='shreddit-player-wrapper']//@src)",
-        "authorUsername": "string(.//*[@data-click-id='user'])",
-        "publisher": "substring(string(.//*[@data-click-id='subreddit']/@href), 2, string-length(string(.//*[@data-click-id='subreddit']/@href)) - 2)",
-        "authorImg": "string(.//img/@src)",
-        "url": "concat('https://www.linkedin.com', string(.//*[@data-click-id='body']/@href))"
+        "id": "substring-after(string(./@data-urn), 'activity:')",
+        "authorUsername": "substring-after(substring-before(string(.//a[contains(@class, 'update-components-actor__image')]/@href), '?'), '/in/')",
+        "authorFullname": ".update-components-actor__name span[dir=ltr]",
+        "authorImg": "string(.//img[contains(@class, 'update-components-actor__avatar-image')]/@src)",
+        "text": "normalize-space(string(.//div[contains(@class, 'feed-shared-update-v2__description-wrapper')]//div[contains(@class, 'update-components-text')]))",
+        "innerImage": "string(.//div[contains(@class, 'update-components-image')]//img/@src)",
+        "url": "concat('https://www.linkedin.com/feed/update/', string(./@data-urn))"
       }
     },
     "PROFILE": {
-      "containerSelector": "._3ozFtOe6WpJEMUtxDOIvtU",
-      "contextSelector": ".QscnL9OySMkHhGudEvEya",
+      "containerSelector": "main",
+      "contextSelector": "section:first-child",
       "widgets": {
         "bos": {
-          "insertionPoint": "._3TG57N4WQtubLLo8SbAXVF",
+          "insertionPoint": ".pv-top-card-v2-ctas",
+          "insert": "inside",
           "insertionPoints": {
             "PROFILE_AVATAR": {
-              "selector": "img:first-child",
+              "selector": ".pv-top-card--photo .profile-photo-edit__edit-btn, .pv-top-card--photo .pv-top-card__non-self-photo-wrapper",
+              "insert": "inside",
               "styles": "styles/profile/bos/avatar.css"
             },
             "PROFILE_FULLNAME": {
-              "selector": "._3TG57N4WQtubLLo8SbAXVF",
+              "selector": ".pv-top-card-v2-ctas",
+              "insert": "inside",
               "styles": "styles/profile/bos/fullname.css"
             }
           }
         }
       },
       "contextBuilder": {
-        "id": "string(.//h2)",
-        "authorFullname": "string(.//h1)",
-        "authorUsername": "string(.//h2)",
-        "authorImg": "string(.//img/@src)"
+        "id": "substring-before(substring-after(string(.//div[contains(@class, 'ph5')]//a[contains(@class, 'pv-text-details__about-this-profile-entrypoint')]/@href), 'in/'), '/')",
+        "authorFullname": "string(.//div[contains(@class, 'ph5')]//h1)",
+        "authorUsername": "substring-before(substring-after(string(.//div[contains(@class, 'ph5')]//a[contains(@class, 'pv-text-details__about-this-profile-entrypoint')]/@href), 'in/'), '/')",
+        "authorImg": "string(.//div[contains(@class, 'ph5')]//img/@src)"
       }
     }
   }
