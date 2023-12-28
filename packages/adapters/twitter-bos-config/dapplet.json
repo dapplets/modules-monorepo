@@ -1,7 +1,7 @@
 {
   "name": "twitter-bos-config",
   "branch": "default",
-  "version": "0.1.5",
+  "version": "0.1.6",
   "type": "CONFIG",
   "title": "Twitter BOS Config",
   "description": "Parser config for Twitter utilizing NEAR BOS developed during the Web3 Hackfest 2023 hackathon. It's a fork from twitter-config.dapplet-base.eth",

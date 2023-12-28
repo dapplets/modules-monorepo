@@ -1,0 +1,88 @@
+{
+  "themes": {
+    "LIGHT": "boolean(//html[contains(@class,'theme-light')])",
+    "DARK": "boolean(//html[contains(@class,'theme-dark')])"
+  },
+  "contexts": {
+    "GLOBAL": {
+      "containerSelector": "html",
+      "contextBuilder": {
+        "id": "string('global')",
+        "websiteName": "string('Reddit')",
+        "username": "string(//*[@id='email-collection-tooltip-id']/span/span[1])",
+        "img": "string(//*[@id='email-collection-tooltip-id']/div/img/@src)",
+        "url": "string(//html/head/meta[@property='og:url']/@content)"
+      }
+    },
+    "POST": {
+      "containerSelector": "body",
+      "contextSelector": "[data-testid='post-container']",
+      "widgets": {
+        "bos": {
+          "insertionPoint": ".STit0dLageRsa2yR4te_b, [data-click-id='text'], ._1NSbknF8ucHV2abfCZw2Z1, ._10wC0aXnrUKfdJ4Ssz-o14",
+          "insertionPoints": {
+            "POST_FULLNAME": {
+              "selector": "._2mHuuvyV9doV3zwbZPtIPG",
+              "styles": "styles/post/bos/fullname.css"
+            },
+            "POST_NORTH": {
+              "selector": ".cZPZhMe-UCZ8htPodMyJ5",
+              "styles": "styles/post/bos/south.css"
+            },
+            "POST_TEXT": {
+              "selector": ".STit0dLageRsa2yR4te_b, [data-click-id='text'], ._1NSbknF8ucHV2abfCZw2Z1, ._10wC0aXnrUKfdJ4Ssz-o14"
+            },
+            "TEXT_BEFORE": {
+              "selector": ".STit0dLageRsa2yR4te_b, [data-click-id='text'], ._1NSbknF8ucHV2abfCZw2Z1, ._10wC0aXnrUKfdJ4Ssz-o14",
+              "insert": "begin",
+              "wrapper": {
+                "styles": "styles/post/bos/text-before-wrapper.css"
+              }
+            },
+            "POST_SOUTH": {
+              "selector": "._3MmwvEEt6fv5kQPFCVJizH",
+              "styles": "styles/post/bos/south.css"
+            }
+          }
+        }
+      },
+      "contextBuilder": {
+        "id": "substring-after(string(./@id), '_')",
+        "text": "substring-before(string(.//*[@data-adclicklocation='title']//*[@data-click-id='body'] | .//*[@data-adclicklocation='title']), '\n')",
+        "innerText": "string(.//*[@data-click-id='body']//*[@data-click-id='text'] | .//*[@data-click-id='text'])",
+        "innerImage": "string(.//*[@data-click-id='media']//img/@src | .//img[contains(@class, 'ImageBox-image media-element')]/@src)",
+        "innerLink": "string(.//a[@data-testid='outbound-link']/@href)",
+        "innerVideo": "string(.//*[@data-click-id='media']//*[@data-testid='shreddit-player-wrapper']//@src)",
+        "authorUsername": "string(.//*[@data-click-id='user'])",
+        "publisher": "substring(string(.//*[@data-click-id='subreddit']/@href), 2, string-length(string(.//*[@data-click-id='subreddit']/@href)) - 2)",
+        "authorImg": "string(.//img/@src)",
+        "url": "concat('https://www.reddit.com', string(.//*[@data-click-id='body']/@href))"
+      }
+    },
+    "PROFILE": {
+      "containerSelector": "._3ozFtOe6WpJEMUtxDOIvtU",
+      "contextSelector": ".QscnL9OySMkHhGudEvEya",
+      "widgets": {
+        "bos": {
+          "insertionPoint": "._3TG57N4WQtubLLo8SbAXVF",
+          "insertionPoints": {
+            "PROFILE_AVATAR": {
+              "selector": "img:first-child",
+              "styles": "styles/profile/bos/avatar.css"
+            },
+            "PROFILE_FULLNAME": {
+              "selector": "._3TG57N4WQtubLLo8SbAXVF",
+              "styles": "styles/profile/bos/fullname.css"
+            }
+          }
+        }
+      },
+      "contextBuilder": {
+        "id": "string(.//h2)",
+        "authorFullname": "string(.//h1)",
+        "authorUsername": "string(.//h2)",
+        "authorImg": "string(.//img/@src)"
+      }
+    }
+  }
+}

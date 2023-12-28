@@ -1,0 +1,17 @@
+{
+  "name": "linkedin-bos-config",
+  "branch": "default",
+  "version": "0.1.0",
+  "type": "CONFIG",
+  "title": "LinkedIn BOS Config",
+  "description": "Parser config for LinkedIn utilizing NEAR BOS",
+  "main": "index.json",
+  "contextIds": [
+    "linkedin.com",
+    "www.linkedin.com"
+  ],
+  "dependencies": {},
+  "interfaces": {
+    "bos-virtual-config.dapplet-base.eth": "0.1.0"
+  }
+}
