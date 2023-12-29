@@ -1,0 +1,84 @@
+{
+  "themes": {
+    "LIGHT": "boolean(//meta[@name='theme-color'][@content='rgba(255, 255, 255, 0.98)'])",
+    "DARK": "boolean(//meta[@name='theme-color'][@content='rgba(33, 33, 33, 0.98)'])"
+  },
+  "contexts": {
+    "GLOBAL": {
+      "containerSelector": "html",
+      "contextBuilder": {
+        "id": "string('global')",
+        "websiteName": "string('YouTube')",
+        "username": "string(.//*[@id='channel-handle']/@title)",
+        "fullname": "string(.//*[@id='account-name']/@title)",
+        "img": "string(.//*[@aria-label='Account menu']//img[@id='img']/@src)",
+        "url": "string(concat('https://www.youtube.com/', string(.//*[@id='channel-handle']/@title)))"
+      }
+    },
+    "POST": {
+      "containerSelector": "#primary>ytd-rich-grid-renderer>#contents, #primary",
+      "contextSelector": "#contents>ytd-rich-item-renderer, #below",
+      "widgets": {
+        "bos": {
+          "insertionPoint": "ytd-video-meta-block, #subscribe-button.style-scope.ytd-watch-metadata",
+          "insertionPoints": {
+            "POST_TEXT": {
+              "selector": "#bottom-row",
+              "insert": "end"
+            },
+            "POST_AVATAR": {
+              "selector": "#avatar.style-scope.ytd-rich-grid-media.no-transition img, #avatar.style-scope.ytd-video-owner-renderer.no-transition img",
+              "styles": "styles/post/bos/post-avatar.css"
+            },
+            "POST_FULLNAME": {
+              "selector": "ytd-channel-name>ytd-badge-supported-renderer"
+            },
+            "TEXT_BEFORE": {
+              "selector": "#bottom-row",
+              "insert": "begin",
+              "wrapper": {
+                "styles": "styles/post/bos/text-before-wrapper.css"
+              }
+            }
+          }
+        }
+      },
+      "contextBuilder": {
+        "id": "substring-after(string(//meta[@property='og:url']/@content | .//h3//a/@href), 'v=')",
+        "text": "string(.//*[@id='description-inline-expander']/yt-attributed-string/span | .//*[@id='attributed-snippet-text']/span)",
+        "authorFullname": "normalize-space(string(.//ytd-channel-name//*[@id='container']//*[@id='text-container']//yt-formatted-string[@id='text']/@title))",
+        "authorUsername": "substring(string(.//ytd-channel-name//*[@id='container']//*[@id='text-container']//yt-formatted-string[@id='text']//a/@href), 2)",
+        "authorImg": "string(.//*[@id='avatar'][contains(@class, 'style-scope ytd-video-owner-renderer no-transition')]//img/@src | .//*[@id='avatar'][contains(@class, 'style-scope ytd-rich-grid-media no-transition')]//img/@src)",
+        "createdAt": "substring-before(substring-after(string(.//*[@id='description']//*[@id='tooltip'][contains(@class, 'style-scope')]), ' • '), ' • ')",
+        "url": "concat('https://www.youtu.be/', substring-after(string(//meta[@property='og:url']/@content | .//h3//a/@href), 'v='))"
+      }
+    },
+    "PROFILE": {
+      "containerSelector": "#channel-container",
+      "contextSelector": "#channel-header",
+      "widgets": {
+        "bos": {
+          "insertionPoint": "#other-buttons",
+          "insertionPoints": {
+            "PROFILE_AVATAR": {
+              "selector": "#avatar>img, #avatar-editor img",
+              "insert": "end",
+              "styles": "styles/profile/bos/avatar.css"
+            },
+            "PROFILE_FULLNAME": {
+              "selector": "#channel-tagline",
+              "insert": "begin",
+              "styles": "styles/profile/bos/fullname.css"
+            }
+          }
+        }
+      },
+      "contextBuilder": {
+        "id": "string(.//*[@id='channel-handle'])",
+        "authorUsername": "string(.//*[@id='channel-handle'])",
+        "authorFullname": "string(.//*[@id='channel-name']//*[@id='text'])",
+        "authorImg": "string(.//*[@id='avatar']//img/@src | .//*[@id='avatar-editor']//img/@src)"
+      }
+    }
+  }
+}
