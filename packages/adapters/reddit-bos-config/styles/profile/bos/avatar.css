@@ -2,5 +2,7 @@
     display: block;
     margin-left: 50px;
     margin-top: 50px;
+    bottom: 0;
     position: absolute;
+    visibility: visible !important;
 }
