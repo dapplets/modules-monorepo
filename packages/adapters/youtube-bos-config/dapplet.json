@@ -1,0 +1,19 @@
+{
+  "name": "youtube-bos-config",
+  "branch": "default",
+  "version": "0.1.0",
+  "type": "CONFIG",
+  "title": "YouTube BOS Config",
+  "description": "Parser config for YouTube utilizing NEAR BOS",
+  "main": "index.json",
+  "contextIds": [
+    "youtube.com",
+    "www.youtube.com",
+    "mobile.youtube.com",
+    "m.youtube.com"
+  ],
+  "dependencies": {},
+  "interfaces": {
+    "bos-virtual-config.dapplet-base.eth": "0.1.0"
+  }
+}
