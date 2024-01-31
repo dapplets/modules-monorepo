@@ -47,7 +47,7 @@
         },
         "southPanel": {
           "selector": ".timeline-comment-actions",
-          "insertionType": "before"
+          "insertionType": "after"
         }
       }
     },
