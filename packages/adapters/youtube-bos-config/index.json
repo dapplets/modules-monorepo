@@ -32,9 +32,9 @@
           "bosLayoutManager": "bos.dapplets.near/widget/ContextActionsGroup",
           "insertionType": "before"
         },
-        "default": {
-          "selector": "ytd-video-meta-block, #subscribe-button.style-scope.ytd-watch-metadata",
-          "insertionType": "before"
+        "southPanel": {
+          "selector": "#details.ytd-rich-grid-media, #subscribe-button.style-scope.ytd-watch-metadata",
+          "insertionType": "after"
         },
         "afterText": {
           "selector": "#bottom-row",
