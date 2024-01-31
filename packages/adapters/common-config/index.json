@@ -1,33 +1,33 @@
 {
-  "themes": {
-    "LIGHT": "boolean(//body[@style='background-color: #FFFFFF;'] | //body[@style='background-color: rgb(255, 255, 255);'])",
-    "DARK": "boolean(//body[@style='background-color: rgb(21, 32, 43);'] | //body[@style='background-color: rgb(0, 0, 0);'])"
-  },
+  "namespace": "https://dapplets.org/ns/json/bos.dapplets.near/parser/common",
   "contexts": {
-    "GLOBAL": {
-      "containerSelector": "html",
-      "contextBuilder": {
+    "root": {
+      "props": {
         "id": "string('global')",
         "websiteName": "string(//title)"
-      }
-    },
-    "BODY": {
-      "containerSelector": "html",
-      "contextSelector": "",
-      "widgets": {
-        "button": {
-          "styles": "styles/body/button.css",
-          "insertionPoint": "body",
-          "insert": "end"
-        },
-        "popup": {
-          "styles": "styles/body/popup.css",
-          "insertionPoint": "body",
-          "insert": "end"
-        }
       },
-      "contextBuilder": {
+      "children": [
+        "body"
+      ]
+    },
+    "body": {
+      "selector": "",
+      "props": {
         "id": "string(//title)"
+      },
+      "insertionPoints": {
+        "before": {
+          "selector": "body",
+          "insertionType": "before"
+        },
+        "end": {
+          "selector": "body",
+          "insertionType": "end"
+        },
+        "after": {
+          "selector": "body",
+          "insertionType": "after"
+        }
       }
     }
   }

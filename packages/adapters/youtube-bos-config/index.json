@@ -1,49 +1,23 @@
 {
-  "themes": {
-    "LIGHT": "boolean(//meta[@name='theme-color'][@content='rgba(255, 255, 255, 0.98)'])",
-    "DARK": "boolean(//meta[@name='theme-color'][@content='rgba(33, 33, 33, 0.98)'])"
-  },
+  "namespace": "https://dapplets.org/ns/json/bos.dapplets.near/parser/youtube",
   "contexts": {
-    "GLOBAL": {
-      "containerSelector": "html",
-      "contextBuilder": {
+    "root": {
+      "props": {
         "id": "string('global')",
         "websiteName": "string('YouTube')",
         "username": "string(.//*[@id='channel-handle']/@title)",
         "fullname": "string(.//*[@id='account-name']/@title)",
         "img": "string(.//*[@aria-label='Account menu']//img[@id='img']/@src)",
         "url": "string(concat('https://www.youtube.com/', string(.//*[@id='channel-handle']/@title)))"
-      }
-    },
-    "POST": {
-      "containerSelector": "#primary>ytd-rich-grid-renderer>#contents, #primary",
-      "contextSelector": "#contents>ytd-rich-item-renderer, #below",
-      "widgets": {
-        "bos": {
-          "insertionPoint": "ytd-video-meta-block, #subscribe-button.style-scope.ytd-watch-metadata",
-          "insertionPoints": {
-            "POST_TEXT": {
-              "selector": "#bottom-row",
-              "insert": "end"
-            },
-            "POST_AVATAR": {
-              "selector": "#avatar.style-scope.ytd-rich-grid-media.no-transition img, #avatar.style-scope.ytd-video-owner-renderer.no-transition img",
-              "styles": "styles/post/bos/post-avatar.css"
-            },
-            "POST_FULLNAME": {
-              "selector": "ytd-channel-name>ytd-badge-supported-renderer"
-            },
-            "TEXT_BEFORE": {
-              "selector": "#bottom-row",
-              "insert": "begin",
-              "wrapper": {
-                "styles": "styles/post/bos/text-before-wrapper.css"
-              }
-            }
-          }
-        }
       },
-      "contextBuilder": {
+      "children": [
+        "post",
+        "profile"
+      ]
+    },
+    "post": {
+      "selector": "#contents>ytd-rich-item-renderer, #below",
+      "props": {
         "id": "substring-after(string(//meta[@property='og:url']/@content | .//h3//a/@href), 'v=')",
         "text": "string(.//*[@id='description-inline-expander']/yt-attributed-string/span | .//*[@id='attributed-snippet-text']/span)",
         "authorFullname": "normalize-space(string(.//ytd-channel-name//*[@id='container']//*[@id='text-container']//yt-formatted-string[@id='text']/@title))",
@@ -51,33 +25,57 @@
         "authorImg": "string(.//*[@id='avatar'][contains(@class, 'style-scope ytd-video-owner-renderer no-transition')]//img/@src | .//*[@id='avatar'][contains(@class, 'style-scope ytd-rich-grid-media no-transition')]//img/@src)",
         "createdAt": "substring-before(substring-after(string(.//*[@id='description']//*[@id='tooltip'][contains(@class, 'style-scope')]), ' • '), ' • ')",
         "url": "concat('https://www.youtu.be/', substring-after(string(//meta[@property='og:url']/@content | .//h3//a/@href), 'v='))"
+      },
+      "insertionPoints": {
+        "root": {
+          "selector": ":scope > div",
+          "bosLayoutManager": "bos.dapplets.near/widget/ContextActionsGroup",
+          "insertionType": "before"
+        },
+        "default": {
+          "selector": "ytd-video-meta-block, #subscribe-button.style-scope.ytd-watch-metadata",
+          "insertionType": "before"
+        },
+        "afterText": {
+          "selector": "#bottom-row",
+          "bosLayoutManager": "bos.dapplets.near/widget/VerticalLayoutManager",
+          "insertionType": "after"
+        },
+        "avatar": {
+          "selector": "#avatar.style-scope.ytd-rich-grid-media.no-transition img, #avatar.style-scope.ytd-video-owner-renderer.no-transition img",
+          "insertionType": "before"
+        },
+        "fullname": {
+          "selector": "ytd-channel-name>ytd-badge-supported-renderer",
+          "insertionType": "before"
+        },
+        "beforeText": {
+          "selector": "#bottom-row",
+          "insertionType": "begin"
+        }
       }
     },
-    "PROFILE": {
-      "containerSelector": "#channel-container",
-      "contextSelector": "#channel-header",
-      "widgets": {
-        "bos": {
-          "insertionPoint": "#other-buttons",
-          "insertionPoints": {
-            "PROFILE_AVATAR": {
-              "selector": "#avatar>img, #avatar-editor img",
-              "insert": "end",
-              "styles": "styles/profile/bos/avatar.css"
-            },
-            "PROFILE_FULLNAME": {
-              "selector": "#channel-tagline",
-              "insert": "begin",
-              "styles": "styles/profile/bos/fullname.css"
-            }
-          }
-        }
-      },
-      "contextBuilder": {
+    "profile": {
+      "selector": "#channel-header",
+      "props": {
         "id": "string(.//*[@id='channel-handle'])",
         "authorUsername": "string(.//*[@id='channel-handle'])",
         "authorFullname": "string(.//*[@id='channel-name']//*[@id='text'])",
         "authorImg": "string(.//*[@id='avatar']//img/@src | .//*[@id='avatar-editor']//img/@src)"
+      },
+      "insertionPoints": {
+        "root": {
+          "selector": "#other-buttons",
+          "insertionType": "before"
+        },
+        "PROFILE_AVATAR": {
+          "selector": "#avatar>img, #avatar-editor img",
+          "insertionType": "before"
+        },
+        "PROFILE_FULLNAME": {
+          "selector": "#channel-tagline",
+          "insertionType": "begin"
+        }
       }
     }
   }

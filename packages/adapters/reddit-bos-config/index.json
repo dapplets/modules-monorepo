@@ -1,52 +1,22 @@
 {
-  "themes": {
-    "LIGHT": "boolean(//html[contains(@class,'theme-light')])",
-    "DARK": "boolean(//html[contains(@class,'theme-dark')])"
-  },
+  "namespace": "https://dapplets.org/ns/json/bos.dapplets.near/parser/reddit",
   "contexts": {
-    "GLOBAL": {
-      "containerSelector": "html",
-      "contextBuilder": {
+    "root": {
+      "props": {
         "id": "string('global')",
         "websiteName": "string('Reddit')",
         "username": "string(//*[@id='email-collection-tooltip-id']/span/span[1])",
         "img": "string(//*[@id='email-collection-tooltip-id']/div/img/@src)",
         "url": "string(//html/head/meta[@property='og:url']/@content)"
-      }
-    },
-    "POST": {
-      "containerSelector": "body",
-      "contextSelector": "[data-testid='post-container']",
-      "widgets": {
-        "bos": {
-          "insertionPoint": ".STit0dLageRsa2yR4te_b, [data-click-id='text'], ._1NSbknF8ucHV2abfCZw2Z1, ._10wC0aXnrUKfdJ4Ssz-o14",
-          "insertionPoints": {
-            "POST_FULLNAME": {
-              "selector": "._2mHuuvyV9doV3zwbZPtIPG",
-              "styles": "styles/post/bos/fullname.css"
-            },
-            "POST_NORTH": {
-              "selector": ".cZPZhMe-UCZ8htPodMyJ5",
-              "styles": "styles/post/bos/south.css"
-            },
-            "POST_TEXT": {
-              "selector": ".STit0dLageRsa2yR4te_b, [data-click-id='text'], ._1NSbknF8ucHV2abfCZw2Z1, ._10wC0aXnrUKfdJ4Ssz-o14"
-            },
-            "TEXT_BEFORE": {
-              "selector": ".STit0dLageRsa2yR4te_b, [data-click-id='text'], ._1NSbknF8ucHV2abfCZw2Z1, ._10wC0aXnrUKfdJ4Ssz-o14",
-              "insert": "begin",
-              "wrapper": {
-                "styles": "styles/post/bos/text-before-wrapper.css"
-              }
-            },
-            "POST_SOUTH": {
-              "selector": "._3MmwvEEt6fv5kQPFCVJizH",
-              "styles": "styles/post/bos/south.css"
-            }
-          }
-        }
       },
-      "contextBuilder": {
+      "children": [
+        "post",
+        "profile"
+      ]
+    },
+    "post": {
+      "selector": "[data-testid='post-container']",
+      "props": {
         "id": "substring-after(string(./@id), '_')",
         "text": "substring-before(string(.//*[@data-adclicklocation='title']//*[@data-click-id='body'] | .//*[@data-adclicklocation='title']), '\n')",
         "innerText": "string(.//*[@data-click-id='body']//*[@data-click-id='text'] | .//*[@data-click-id='text'])",
@@ -57,32 +27,61 @@
         "publisher": "substring(string(.//*[@data-click-id='subreddit']/@href), 2, string-length(string(.//*[@data-click-id='subreddit']/@href)) - 2)",
         "authorImg": "string(.//img/@src)",
         "url": "concat('https://www.reddit.com', string(.//*[@data-click-id='body']/@href))"
+      },
+      "insertionPoints": {
+        "root": {
+          "selector": "",
+          "bosLayoutManager": "bos.dapplets.near/widget/ContextActionsGroup",
+          "insertionType": "before"
+        },
+        "default": {
+          "selector": ".STit0dLageRsa2yR4te_b, [data-click-id='text'], ._1NSbknF8ucHV2abfCZw2Z1, ._10wC0aXnrUKfdJ4Ssz-o14",
+          "insertionType": "before"
+        },
+        "fullname": {
+          "selector": "._2mHuuvyV9doV3zwbZPtIPG",
+          "insertionType": "before"
+        },
+        "northPanel": {
+          "selector": ".cZPZhMe-UCZ8htPodMyJ5",
+          "insertionType": "before"
+        },
+        "afterText": {
+          "selector": ".STit0dLageRsa2yR4te_b, [data-click-id='text'], ._1NSbknF8ucHV2abfCZw2Z1, ._10wC0aXnrUKfdJ4Ssz-o14",
+          "bosLayoutManager": "bos.dapplets.near/widget/VerticalLayoutManager",
+          "insertionType": "after"
+        },
+        "beforeText": {
+          "selector": ".STit0dLageRsa2yR4te_b, [data-click-id='text'], ._1NSbknF8ucHV2abfCZw2Z1, ._10wC0aXnrUKfdJ4Ssz-o14",
+          "insertionType": "before"
+        },
+        "southPanel": {
+          "selector": "._3MmwvEEt6fv5kQPFCVJizH",
+          "insertionType": "before"
+        }
       }
     },
-    "PROFILE": {
-      "containerSelector": "._3ozFtOe6WpJEMUtxDOIvtU, .masthead, main, section[id='right-sidebar-container']",
-      "contextSelector": ".QscnL9OySMkHhGudEvEya, div",
-      "widgets": {
-        "bos": {
-          "insertionPoint": "._3TG57N4WQtubLLo8SbAXVF, .flex.w-100.mt-xs>span, faceplate-tracker[source='profile'][noun='chat']",
-          "styles": "styles/profile/bos/fullname.css",
-          "insertionPoints": {
-            "PROFILE_AVATAR": {
-              "selector": "img:last-child, .shreddit-subreddit-icon__icon",
-              "styles": "styles/profile/bos/avatar.css"
-            },
-            "PROFILE_FULLNAME": {
-              "selector": "._3TG57N4WQtubLLo8SbAXVF, .flex.w-100.mt-xs>span, faceplate-tracker[source='profile'][noun='chat']",
-              "styles": "styles/profile/bos/fullname.css"
-            }
-          }
-        }
-      },
-      "contextBuilder": {
+    "profile": {
+      "selector": ".QscnL9OySMkHhGudEvEya",
+      "props": {
         "id": "string(.//h2 | .//*[contains(@class, 'flex items-end justify-start')]//*[contains(@class, 'font-bold text-18')])",
         "authorFullname": "string(.//h1 | .//*[contains(@class, 'flex items-end justify-start')]//*[contains(@class, 'font-bold text-18')])",
         "authorUsername": "string(.//h2 | .//*[contains(@class, 'flex items-end justify-start')]//*[contains(@class, 'font-bold text-18')])",
         "authorImg": "string(.//img/@src | .//*[contains(@class, 'flex items-end justify-start')]//*[contains(@class, 'font-bold text-18')])"
+      },
+      "insertionPoints": {
+        "default": {
+          "selector": "._3TG57N4WQtubLLo8SbAXVF, .flex.w-100.mt-xs>span, faceplate-tracker[source='profile'][noun='chat']",
+          "insertionType": "before"
+        },
+        "avatar": {
+          "selector": "img:last-child, .shreddit-subreddit-icon__icon",
+          "insertionType": "before"
+        },
+        "fullname": {
+          "selector": "._3TG57N4WQtubLLo8SbAXVF, .flex.w-100.mt-xs>span, faceplate-tracker[source='profile'][noun='chat']",
+          "insertionType": "before"
+        }
       }
     }
   }
