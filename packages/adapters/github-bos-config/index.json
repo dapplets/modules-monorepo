@@ -1,0 +1,124 @@
+{
+  "themes": {
+    "LIGHT": "boolean(//html[@data-color-mode='light'])",
+    "DARK": "boolean(//html[@data-color-mode='dark'])"
+  },
+  "contexts": {
+    "GLOBAL": {
+      "containerSelector": "html",
+      "contextBuilder": {
+        "id": "string('global')",
+        "websiteName": "string('GitHub')",
+        "username": "normalize-space(string(//div[@class='Overlay-titleWrap']//span[@class='Truncate-text']))",
+        "fullname": "normalize-space(string(//div[@class='Overlay-titleWrap']//span[@class='Truncate-text']/../../span[2]))",
+        "img": "string(//div[@class='Overlay-titleWrap']//img/@src)",
+        "url": "string(//html/head/meta[@property='og:url']/@content)"
+      }
+    },
+    "PROFILE": {
+      "containerSelector": ".js-profile-editable-replace",
+      "contextSelector": "",
+      "widgets": {
+        "bos": {
+          "insertionPoint": "div.clearfix",
+          "insert": "end",
+          "insertionPoints": {
+            "PROFILE_AVATAR": {
+              "selector": "div.clearfix > div",
+              "insert": "inside",
+              "styles": "styles/profile/bos/avatar.css"
+            },
+            "PROFILE_FULLNAME": {
+              "selector": "h1>span:first-child",
+              "insert": "end",
+              "wrapper": {
+                "styles": "styles/profile/bos/fullname.css"
+              }
+            }
+          }
+        }
+      },
+      "contextBuilder": {
+        "id": "normalize-space(string(.//h1/span[2]))",
+        "authorFullname": "normalize-space(string(.//h1/span[1]))",
+        "authorUsername": "normalize-space(string(.//h1/span[2]))",
+        "authorImg": "string(.//img/@src)",
+        "url": "string(//html/head/meta[@property='og:url']/@content)"
+      }
+    },
+    "POST": {
+      "containerSelector": ".js-discussion",
+      "contextSelector": ".TimelineItem.js-comment-container",
+      "widgets": {
+        "bos": {
+          "insertionPoint": ".js-comment-body",
+          "insert": "end",
+          "insertionPoints": {
+            "POST_TEXT": {
+              "selector": ".js-comment-body",
+              "insert": "end"
+            },
+            "POST_AVATAR": {
+              "selector": "div.TimelineItem-avatar > a",
+              "styles": "styles/post/bos/post-avatar.css"
+            },
+            "POST_FULLNAME": {
+              "selector": ".timeline-comment-header strong",
+              "insert": "end",
+              "wrapper": {
+                "styles": "styles/post/bos/fullname.css"
+              }
+            },
+            "TEXT_BEFORE": {
+              "selector": ".js-comment-body",
+              "insert": "begin",
+              "wrapper": {
+                "styles": "styles/post/bos/text-before-wrapper.css"
+              }
+            },
+            "POST_SOUTH": {
+              "selector": ".timeline-comment-actions",
+              "styles": "styles/post/bos/south.css"
+            }
+          }
+        }
+      },
+      "contextBuilder": {
+        "id": "string(.//div[contains(@class,'timeline-comment-group')]/@id)",
+        "authorUsername": "substring-after(string(.//div[contains(@class,'TimelineItem-avatar')]/a/@href | .//a[contains(@class,'TimelineItem-avatar')]/@href), '/')",
+        "authorImg": "string(.//*[contains(@class,'TimelineItem-avatar')]//img/@src)",
+        "url": "concat(string(//html/head/meta[@property='og:url']/@content),'#', string(.//div[contains(@class,'timeline-comment-group')]/@id))",
+        "createdAt": "string(.//relative-time/@datetime)",
+        "text": "normalize-space(string(.//*[contains(@class,'js-comment-body')]))",
+        "authorFullname": ""
+      }
+    },
+    "PROFILE_POPUP": {
+      "containerSelector": "body",
+      "contextSelector": ".Popover",
+      "widgets": {
+        "bos": {
+          "insertionPoints": {
+            "PROFILE_POPUP_AVATAR": {
+              "selector": "[data-testid=UserAvatar-Container-MrConCreator]",
+              "insert": "end"
+            },
+            "PROFILE_POPUP_TEXT": {
+              "selector": "[aria-label='User login and name']",
+              "insert": "end",
+              "wrapper": {
+                "styles": "styles/profile-popup/bos/popup-text-wrapper.css"
+              }
+            }
+          }
+        }
+      },
+      "contextBuilder": {
+        "id": "substring-after(string(.//a/@href), '/')",
+        "authorFullname": "normalize-space(string(.//*[@aria-label='User login and name'] //*[contains(@class, 'Truncate')]))",
+        "authorUsername": "substring-after(string(.//a/@href), '/')",
+        "authorImg": "string(.//a//img/@src)"
+      }
+    }
+  }
+}

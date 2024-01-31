@@ -1,0 +1,82 @@
+{
+  "namespace": "https://dapplets.org/ns/json/bos.dapplets.near/parser/linkedin",
+  "contexts": {
+    "root": {
+      "props": {
+        "id": "string('global')",
+        "websiteName": "string('LinkedIn')",
+        "username": "substring(substring-before(substring-after(string(.//body/code[7]), 'publicIdentifier'), ','), 4, string-length(substring-before(substring-after(string(.//body/code[7]), 'publicIdentifier'), ',')) - 4)",
+        "fullname": "string(//img[contains(@class, 'global-nav__me-photo')]/@alt)",
+        "img": "string(//img[contains(@class, 'global-nav__me-photo')]/@src)",
+        "url": "string('https://www.linkedin.com')"
+      },
+      "children": [
+        "post",
+        "profile"
+      ]
+    },
+    "post": {
+      "selector": ".feed-shared-update-v2",
+      "props": {
+        "id": "substring-after(string(./@data-urn), 'activity:')",
+        "authorUsername": "substring-after(substring-before(string(.//a[contains(@class, 'update-components-actor__image')]/@href), '?'), '/in/')",
+        "authorFullname": ".update-components-actor__name span[dir=ltr]",
+        "authorImg": "string(.//img[contains(@class, 'update-components-actor__avatar-image')]/@src)",
+        "text": "normalize-space(string(.//div[contains(@class, 'feed-shared-update-v2__description-wrapper')]//div[contains(@class, 'update-components-text')]))",
+        "innerImage": "string(.//div[contains(@class, 'update-components-image')]//img/@src)",
+        "url": "concat('https://www.linkedin.com/feed/update/', string(./@data-urn))"
+      },
+      "insertionPoints": {
+        "root": {
+          "selector": ":scope > div",
+          "bosLayoutManager": "bos.dapplets.near/widget/ContextActionsGroup",
+          "insertionType": "before"
+        },
+        "avatar": {
+          "selector": ".js-update-components-actor__avatar div:first-child",
+          "insertionType": "end"
+        },
+        "northPanel": {
+          "selector": ".update-components-actor__container",
+          "insertionType": "before"
+        },
+        "southPanel": {
+          "selector": ".feed-shared-social-action-bar__action-button:last-child",
+          "insertionType": "before"
+        },
+        "fullname": {
+          "selector": ".update-components-actor__meta>a:last-child>span>div>span",
+          "insertionType": "end"
+        },
+        "afterText": {
+          "selector": ".update-v2-social-activity",
+          "bosLayoutManager": "bos.dapplets.near/widget/VerticalLayoutManager",
+          "insertionType": "begin"
+        },
+        "beforeText": {
+          "selector": ".update-components-actor",
+          "insertionType": "before"
+        }
+      }
+    },
+    "profile": {
+      "selector": "section:first-child",
+      "props": {
+        "id": "substring-before(substring-after(string(.//div[contains(@class, 'ph5')]//a[contains(@class, 'pv-text-details__about-this-profile-entrypoint')]/@href), 'in/'), '/')",
+        "authorFullname": "string(.//div[contains(@class, 'ph5')]//h1)",
+        "authorUsername": "substring-before(substring-after(string(.//div[contains(@class, 'ph5')]//a[contains(@class, 'pv-text-details__about-this-profile-entrypoint')]/@href), 'in/'), '/')",
+        "authorImg": "string(.//div[contains(@class, 'ph5')]//img/@src)"
+      },
+      "insertionPoints": {
+        "avatar": {
+          "selector": ".pv-top-card--photo .profile-photo-edit__edit-btn, .pv-top-card--photo .pv-top-card__non-self-photo-wrapper",
+          "insertionType": "before"
+        },
+        "fullname": {
+          "selector": ".pv-top-card-v2-ctas",
+          "insertionType": "before"
+        }
+      }
+    }
+  }
+}

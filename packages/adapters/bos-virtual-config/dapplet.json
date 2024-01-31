@@ -1,0 +1,8 @@
+{
+  "name": "bos-virtual-config.dapplet-base.eth",
+  "branch": "default",
+  "version": "0.1.0",
+  "type": "INTERFACE",
+  "title": "BOS Virtual Config",
+  "description": "Virtual config for interaction with BOS components"
+}

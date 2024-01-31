@@ -1,0 +1,16 @@
+{
+  "name": "bos-virtual-adapter-demo.dapplet-base.eth",
+  "branch": "default",
+  "version": "0.1.0",
+  "type": "FEATURE",
+  "title": "BOS Virtual Config Demo",
+  "description": "Demo dapplet for BOS Virtual Config",
+  "main": "build/index.js",
+  "icon": "src/Red_Icon3.png",
+  "contextIds": [
+    "bos-virtual-config.dapplet-base.eth"
+  ],
+  "dependencies": {
+    "bos-virtual-config.dapplet-base.eth": "0.1.0"
+  }
+}

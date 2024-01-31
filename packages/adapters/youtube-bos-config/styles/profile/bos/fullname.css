@@ -1,0 +1,7 @@
+:host {
+    position: relative;
+    left: 8px;
+    display: inline-flex;
+    white-space: nowrap;
+    bottom: -8px;
+}

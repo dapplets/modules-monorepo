@@ -1,63 +1,78 @@
 {
-  "themes": {
-    "LIGHT": "boolean(//html[@data-color-mode='light'])",
-    "DARK": "boolean(//html[@data-color-mode='dark'])"
-  },
+  "namespace": "https://dapplets.org/ns/json/bos.dapplets.near/parser/github",
   "contexts": {
-    "GLOBAL": {
-      "containerSelector": "html",
-      "contextBuilder": {
+    "root": {
+      "props": {
         "id": "string('global')",
         "websiteName": "string('GitHub')",
         "username": "normalize-space(string(//div[@class='Overlay-titleWrap']//span[@class='Truncate-text']))",
         "fullname": "normalize-space(string(//div[@class='Overlay-titleWrap']//span[@class='Truncate-text']/../../span[2]))",
         "img": "string(//div[@class='Overlay-titleWrap']//img/@src)",
         "url": "string(//html/head/meta[@property='og:url']/@content)"
+      },
+      "children": [
+        "post",
+        "profile"
+      ]
+    },
+    "post": {
+      "selector": ".TimelineItem.js-comment-container",
+      "props": {
+        "id": "string(.//div[contains(@class,'timeline-comment-group')]/@id)",
+        "authorUsername": "substring-after(string(.//div[contains(@class,'TimelineItem-avatar')]/a/@href | .//a[contains(@class,'TimelineItem-avatar')]/@href), '/')",
+        "authorImg": "string(.//*[contains(@class,'TimelineItem-avatar')]//img/@src)",
+        "url": "concat(string(//html/head/meta[@property='og:url']/@content),'#', string(.//div[contains(@class,'timeline-comment-group')]/@id))",
+        "createdAt": "string(.//relative-time/@datetime)",
+        "text": "normalize-space(string(.//*[contains(@class,'js-comment-body')]))"
+      },
+      "insertionPoints": {
+        "root": {
+          "selector": ":scope > .timeline-comment-group",
+          "bosLayoutManager": "bos.dapplets.near/widget/ContextActionsGroup",
+          "insertionType": "after"
+        },
+        "beforeText": {
+          "selector": ".js-comment-body",
+          "bosLayoutManager": "bos.dapplets.near/widget/VerticalLayoutManager",
+          "insertionType": "before"
+        },
+        "afterText": {
+          "selector": ".js-comment-body",
+          "bosLayoutManager": "bos.dapplets.near/widget/VerticalLayoutManager",
+          "insertionType": "after"
+        },
+        "avatar": {
+          "selector": "div.TimelineItem-avatar > a",
+          "insertionType": "before"
+        },
+        "southPanel": {
+          "selector": ".timeline-comment-actions",
+          "insertionType": "after"
+        }
       }
     },
-    "PROFILE": {
-      "containerSelector": ".js-profile-editable-replace",
-      "contextSelector": "",
-      "widgets": {
-        "button": {
-          "styles": "styles/profile/button.css",
-          "insertionPoint": "div.clearfix",
-          "insert": "end"
-        },
-        "avatarBadge": {
-          "styles": "styles/profile/avatarBadge.css",
-          "insertionPoint": "div.clearfix > div",
-          "insert": "inside"
-        }
-      },
-      "contextBuilder": {
+    "profile": {
+      "selector": ".js-profile-editable-replace",
+      "props": {
         "id": "normalize-space(substring-before(substring-after(string(.//h1/span[2]), '\n'), '\n'))",
         "authorFullname": "normalize-space(string(.//h1/span[1]))",
         "authorUsername": "normalize-space(substring-before(substring-after(string(.//h1/span[2]), '\n'), '\n'))",
         "authorImg": "string(.//img/@src)",
         "url": "concat('https://github.com/', normalize-space(substring-before(substring-after(string(.//h1/span[2]), '\n'), '\n')))"
-      }
-    },
-    "POST": {
-      "containerSelector": ".js-discussion",
-      "contextSelector": ".TimelineItem.js-comment-container",
-      "widgets": {
-        "button": {
-          "styles": "styles/post/button.css",
-          "insertionPoint": ".timeline-comment-actions",
-          "button": "end"
-        },
-        "avatarBadge": {
-          "styles": "styles/post/avatarBadge.css",
-          "insertionPoint": "div.TimelineItem-avatar > a",
-          "button": "end"
-        }
       },
-      "contextBuilder": {
-        "id": "string(.//div[contains(@class,'timeline-comment-group')]/@id)",
-        "authorUsername": "substring-after(string(.//div[contains(@class,'TimelineItem-avatar')]/a/@href | .//a[contains(@class,'TimelineItem-avatar')]/@href), '/')",
-        "authorImg": "string(.//*[contains(@class,'TimelineItem-avatar')]//img/@src)",
-        "url": "concat('https://github.com', substring(string(//a[@id='pull-requests-tab'][@aria-current='page']/@href), 1, string-length(string(//a[@id='pull-requests-tab'][@aria-current='page']/@href))-1), string(//a[@id='issues-tab'][@aria-current='page']/@href), '/', substring-before(substring-after(substring-after(string(//title), ' · '), '#'), ' · '),'#', string(.//div[contains(@class,'timeline-comment-group')]/@id))"
+      "insertionPoints": {
+        "southPanel": {
+          "selector": "div.clearfix",
+          "insertionType": "end"
+        },
+        "avatar": {
+          "selector": "div.clearfix > div",
+          "insertionType": "end"
+        },
+        "fullname": {
+          "selector": "h1>span:first-child",
+          "insertionType": "end"
+        }
       }
     }
   }
